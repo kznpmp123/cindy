@@ -101,7 +101,7 @@ class _LoginUser extends StatelessWidget {
         ),
         _AdminPanel(),
         Padding(
-          padding: const EdgeInsets.only(bottom: 20),
+          padding: const EdgeInsets.only(top:30, bottom: 20),
           child: Center(
             child: GestureDetector(
               onTap: _controller.logout,
