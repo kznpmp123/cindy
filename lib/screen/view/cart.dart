@@ -146,7 +146,7 @@ class CartView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "အိမ်အရောက် ပို့ဆောင်စရိတ်",
+                        "ပို့ဆောင်စရိတ်",
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w400,

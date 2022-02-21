@@ -161,7 +161,7 @@ class DetailScreen extends StatelessWidget {
                       fontSize: 16),),
 
                 Text(
-                  "${controller.selectedItem.value.discountprice} ကျပ်",
+                  "${controller.selectedItem.value.discountprice} Kyats",
                   style: TextStyle(
                     decoration: TextDecoration.lineThrough,
                     fontSize: 16,
@@ -170,7 +170,7 @@ class DetailScreen extends StatelessWidget {
                   ),
                 ),
 
-                Text("${controller.selectedItem.value.price} ကျပ်",
+                Text("${controller.selectedItem.value.price} Kyats",
                   style: TextStyle(color: Colors.black,
                       fontWeight: FontWeight.bold,
                       fontSize: 16),
@@ -219,7 +219,7 @@ class DetailScreen extends StatelessWidget {
                     Column(
                       children: [
                         Text(
-                          "👚 Brand",
+                          "💁 Availability ",
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
