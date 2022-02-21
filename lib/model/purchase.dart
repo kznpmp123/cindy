@@ -7,6 +7,7 @@ class PurchaseModel {
   final String email;
   final int phone;
   final String address;
+  final String? bankSlipImage;
   final DateTime? dateTime;
 
   PurchaseModel({
@@ -16,8 +17,29 @@ class PurchaseModel {
     required this.email,
     required this.phone,
     required this.address,
+    required this.bankSlipImage,
     this.dateTime,
   });
+
+  //Object Clone
+  PurchaseModel copyWith({
+    String? id,
+    List? items,
+    String? name,
+    String? email,
+    int? phone,
+    String? address,
+    String? bankSlipImage,
+    DateTime? dateTime,
+  }) =>
+      PurchaseModel(
+        items: items ?? this.items,
+        name: name ?? this.name,
+        email: email ?? this.email,
+        phone: phone ?? this.phone,
+        address: address ?? this.address,
+        bankSlipImage: bankSlipImage ?? this.bankSlipImage,
+      );
 
   factory PurchaseModel.fromJson(Map<String, dynamic> json, String id) =>
       PurchaseModel(
@@ -27,8 +49,14 @@ class PurchaseModel {
         email: json['email'] as String,
         phone: json['phone'] as int,
         address: json['address'] as String,
+        bankSlipImage: json['bankSlipImage'] as String?,
         dateTime: (json['dateTime'] as Timestamp).toDate(),
       );
+
+  @override
+  String toString() {
+    return "$id,$items,$name,$email,$phone,$address,$bankSlipImage,$dateTime";
+  }
 
   Map<String, dynamic> toJson() => {
         'items': items,
@@ -36,6 +64,7 @@ class PurchaseModel {
         'email': email,
         'phone': phone,
         'address': address,
+        'bankSlipImage': bankSlipImage,
         'dateTime': dateTime ?? DateTime.now(),
       };
 }

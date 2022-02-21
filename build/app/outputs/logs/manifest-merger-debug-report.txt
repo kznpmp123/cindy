@@ -5,16 +5,18 @@ INJECTED from /Users/zarnibwar/Downloads/IOS Apps/cindy/android/app/src/main/And
 INJECTED from /Users/zarnibwar/Downloads/IOS Apps/cindy/android/app/src/main/AndroidManifest.xml:1:1-41:12
 INJECTED from /Users/zarnibwar/Downloads/IOS Apps/cindy/android/app/src/main/AndroidManifest.xml:1:1-41:12
 MERGED from /Users/zarnibwar/Downloads/IOS Apps/cindy/android/app/src/main/AndroidManifest.xml:1:1-41:12
-MERGED from [:firebase_auth] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-15:12
 MERGED from [:cloud_firestore] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-15:12
+MERGED from [:firebase_auth] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-15:12
+MERGED from [:firebase_storage] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-15:12
 MERGED from [:firebase_messaging] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-46:12
 MERGED from [:firebase_core] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-15:12
 MERGED from [:image_picker] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-19:12
 MERGED from [:flutter_plugin_android_lifecycle] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/flutter_plugin_android_lifecycle/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:sqflite] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/sqflite/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:flutter_local_notifications] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-28:12
-MERGED from [:url_launcher] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-14:12
 MERGED from [:path_provider] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/path_provider/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:shared_preferences_android] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/shared_preferences_android/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:url_launcher] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-14:12
 MERGED from [com.google.firebase:firebase-inappmessaging-display:20.1.1] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/c895665c9fb09b0ae1c055794c48a39c/jetified-firebase-inappmessaging-display-20.1.1/AndroidManifest.xml:2:1-32:12
 MERGED from [com.google.firebase:firebase-analytics:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/93b0a1d9f850837cc791e1bdd9d913db/jetified-firebase-analytics-20.0.0/AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.firebase:firebase-messaging:23.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/955be42cb0286a736ff6d4ee15b76099/jetified-firebase-messaging-23.0.0/AndroidManifest.xml:17:1-58:12
@@ -25,9 +27,10 @@ MERGED from [com.google.android.datatransport:transport-runtime:3.1.0] /Users/za
 MERGED from [com.google.firebase:firebase-encoders-json:18.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/3de9b98863cd05292ddc5bb76dbb2818/jetified-firebase-encoders-json-18.0.0/AndroidManifest.xml:15:1-23:12
 MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/cb85e813550ceb859d5d8655b705694f/jetified-firebase-auth-21.0.1/AndroidManifest.xml:17:1-83:12
 MERGED from [com.google.firebase:firebase-firestore:24.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/875fba2a3c7d150fb639a449876b754f/jetified-firebase-firestore-24.0.0/AndroidManifest.xml:2:1-26:12
+MERGED from [com.google.firebase:firebase-storage:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/aac17191751d9819c4ba4efa4c4713d8/jetified-firebase-storage-20.0.0/AndroidManifest.xml:15:1-39:12
 MERGED from [com.google.android.gms:play-services-measurement-api:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/d8b5451fc82c883313b73938aa29c281/jetified-play-services-measurement-api-20.0.0/AndroidManifest.xml:17:1-36:12
-MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/2b298d710992f12b9e2e0e6710dea16b/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:2:1-10:12
 MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0-beta02] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/ff5e8f7b0a77959153f924b5295ae982/jetified-firebase-appcheck-interop-16.0.0-beta02/AndroidManifest.xml:15:1-26:12
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/2b298d710992f12b9e2e0e6710dea16b/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:2:1-10:12
 MERGED from [com.google.firebase:firebase-installations:17.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/2b663374f2a3beef67e4fc09532fc190/jetified-firebase-installations-17.0.0/AndroidManifest.xml:2:1-24:12
 MERGED from [com.google.firebase:firebase-abt:21.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/34ccb9c7b62caa6d482db8e626c7a0e9/jetified-firebase-abt-21.0.0/AndroidManifest.xml:2:1-19:12
 MERGED from [com.google.firebase:firebase-common:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/e8c12af64c0d197211b7d090cb61cdf8/jetified-firebase-common-20.0.0/AndroidManifest.xml:15:1-40:12
@@ -37,9 +40,9 @@ MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/zarnibwar/.gradle/c
 MERGED from [androidx.media:media:1.1.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/895548e7b52aa36d663b6a40a867846c/media-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat:1.1.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/7a381ab645c1828f35cd39a445a33042/appcompat-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.browser:browser:1.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/afd2d987ef6a954ce95af3f20bd0f6cf/browser-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.firebase:firebase-database-collection:18.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/369c59889e801cc817dee2786a28ea2c/jetified-firebase-database-collection-18.0.0/AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-auth-api-phone:17.4.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/4137babf2606acb1e424ad3914d5b8b3/jetified-play-services-auth-api-phone-17.4.0/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/f263fcb179e74220f9266564bf6fa6b0/jetified-play-services-safetynet-17.0.0/AndroidManifest.xml:17:1-24:12
-MERGED from [com.google.firebase:firebase-database-collection:18.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/369c59889e801cc817dee2786a28ea2c/jetified-firebase-database-collection-18.0.0/AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-base:17.1.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/0813e45a0b3806629b40dbeb70c75a60/jetified-play-services-base-17.1.0/AndroidManifest.xml:17:1-29:12
 MERGED from [com.google.android.gms:play-services-measurement:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/8450057caa35aac30a045729c438a3d4/jetified-play-services-measurement-20.0.0/AndroidManifest.xml:17:1-46:12
 MERGED from [com.google.android.gms:play-services-measurement-sdk:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/46d239c8cf7500f03306f5880487a220/jetified-play-services-measurement-sdk-20.0.0/AndroidManifest.xml:17:1-25:12
@@ -110,10 +113,12 @@ INJECTED from /Users/zarnibwar/Downloads/IOS Apps/cindy/android/app/src/debug/An
 		ADDED from /Users/zarnibwar/Downloads/IOS Apps/cindy/android/app/src/main/AndroidManifest.xml:1:11-69
 application
 ADDED from /Users/zarnibwar/Downloads/IOS Apps/cindy/android/app/src/main/AndroidManifest.xml:3:4-40:19
-MERGED from [:firebase_auth] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
-MERGED from [:firebase_auth] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
 MERGED from [:cloud_firestore] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
 MERGED from [:cloud_firestore] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_auth] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_auth] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_storage] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_storage] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_messaging] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-44:19
 MERGED from [:firebase_messaging] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-44:19
 MERGED from [:firebase_core] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
@@ -142,12 +147,14 @@ MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/zarnibwar/.gradle/
 MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/cb85e813550ceb859d5d8655b705694f/jetified-firebase-auth-21.0.1/AndroidManifest.xml:26:5-81:19
 MERGED from [com.google.firebase:firebase-firestore:24.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/875fba2a3c7d150fb639a449876b754f/jetified-firebase-firestore-24.0.0/AndroidManifest.xml:16:5-24:19
 MERGED from [com.google.firebase:firebase-firestore:24.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/875fba2a3c7d150fb639a449876b754f/jetified-firebase-firestore-24.0.0/AndroidManifest.xml:16:5-24:19
+MERGED from [com.google.firebase:firebase-storage:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/aac17191751d9819c4ba4efa4c4713d8/jetified-firebase-storage-20.0.0/AndroidManifest.xml:29:5-37:19
+MERGED from [com.google.firebase:firebase-storage:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/aac17191751d9819c4ba4efa4c4713d8/jetified-firebase-storage-20.0.0/AndroidManifest.xml:29:5-37:19
 MERGED from [com.google.android.gms:play-services-measurement-api:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/d8b5451fc82c883313b73938aa29c281/jetified-play-services-measurement-api-20.0.0/AndroidManifest.xml:26:5-34:19
 MERGED from [com.google.android.gms:play-services-measurement-api:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/d8b5451fc82c883313b73938aa29c281/jetified-play-services-measurement-api-20.0.0/AndroidManifest.xml:26:5-34:19
-MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/2b298d710992f12b9e2e0e6710dea16b/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:7:5-8:19
-MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/2b298d710992f12b9e2e0e6710dea16b/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:7:5-8:19
 MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0-beta02] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/ff5e8f7b0a77959153f924b5295ae982/jetified-firebase-appcheck-interop-16.0.0-beta02/AndroidManifest.xml:24:5-20
 MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0-beta02] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/ff5e8f7b0a77959153f924b5295ae982/jetified-firebase-appcheck-interop-16.0.0-beta02/AndroidManifest.xml:24:5-20
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/2b298d710992f12b9e2e0e6710dea16b/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/2b298d710992f12b9e2e0e6710dea16b/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:7:5-8:19
 MERGED from [com.google.firebase:firebase-installations:17.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/2b663374f2a3beef67e4fc09532fc190/jetified-firebase-installations-17.0.0/AndroidManifest.xml:14:5-22:19
 MERGED from [com.google.firebase:firebase-installations:17.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/2b663374f2a3beef67e4fc09532fc190/jetified-firebase-installations-17.0.0/AndroidManifest.xml:14:5-22:19
 MERGED from [com.google.firebase:firebase-abt:21.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/34ccb9c7b62caa6d482db8e626c7a0e9/jetified-firebase-abt-21.0.0/AndroidManifest.xml:11:5-17:19
@@ -242,10 +249,12 @@ uses-sdk
 INJECTED from /Users/zarnibwar/Downloads/IOS Apps/cindy/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/zarnibwar/Downloads/IOS Apps/cindy/android/app/src/main/AndroidManifest.xml
 INJECTED from /Users/zarnibwar/Downloads/IOS Apps/cindy/android/app/src/main/AndroidManifest.xml
-MERGED from [:firebase_auth] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:firebase_auth] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:cloud_firestore] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:cloud_firestore] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:firebase_auth] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:firebase_auth] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:firebase_storage] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:firebase_storage] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:firebase_messaging] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:firebase_messaging] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
@@ -258,10 +267,12 @@ MERGED from [:sqflite] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/sqflite/i
 MERGED from [:sqflite] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/sqflite/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:flutter_local_notifications] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:flutter_local_notifications] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:url_launcher] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:url_launcher] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:path_provider] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/path_provider/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:path_provider] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/path_provider/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences_android] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/shared_preferences_android/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences_android] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/shared_preferences_android/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-inappmessaging-display:20.1.1] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/c895665c9fb09b0ae1c055794c48a39c/jetified-firebase-inappmessaging-display-20.1.1/AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.firebase:firebase-inappmessaging-display:20.1.1] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/c895665c9fb09b0ae1c055794c48a39c/jetified-firebase-inappmessaging-display-20.1.1/AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.firebase:firebase-analytics:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/93b0a1d9f850837cc791e1bdd9d913db/jetified-firebase-analytics-20.0.0/AndroidManifest.xml:5:5-44
@@ -282,12 +293,14 @@ MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/zarnibwar/.gradle/
 MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/cb85e813550ceb859d5d8655b705694f/jetified-firebase-auth-21.0.1/AndroidManifest.xml:21:5-44
 MERGED from [com.google.firebase:firebase-firestore:24.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/875fba2a3c7d150fb639a449876b754f/jetified-firebase-firestore-24.0.0/AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.firebase:firebase-firestore:24.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/875fba2a3c7d150fb639a449876b754f/jetified-firebase-firestore-24.0.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.firebase:firebase-storage:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/aac17191751d9819c4ba4efa4c4713d8/jetified-firebase-storage-20.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.firebase:firebase-storage:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/aac17191751d9819c4ba4efa4c4713d8/jetified-firebase-storage-20.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.gms:play-services-measurement-api:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/d8b5451fc82c883313b73938aa29c281/jetified-play-services-measurement-api-20.0.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-measurement-api:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/d8b5451fc82c883313b73938aa29c281/jetified-play-services-measurement-api-20.0.0/AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/2b298d710992f12b9e2e0e6710dea16b/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/2b298d710992f12b9e2e0e6710dea16b/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0-beta02] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/ff5e8f7b0a77959153f924b5295ae982/jetified-firebase-appcheck-interop-16.0.0-beta02/AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0-beta02] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/ff5e8f7b0a77959153f924b5295ae982/jetified-firebase-appcheck-interop-16.0.0-beta02/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/2b298d710992f12b9e2e0e6710dea16b/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/2b298d710992f12b9e2e0e6710dea16b/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-installations:17.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/2b663374f2a3beef67e4fc09532fc190/jetified-firebase-installations-17.0.0/AndroidManifest.xml:6:5-8:41
 MERGED from [com.google.firebase:firebase-installations:17.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/2b663374f2a3beef67e4fc09532fc190/jetified-firebase-installations-17.0.0/AndroidManifest.xml:6:5-8:41
 MERGED from [com.google.firebase:firebase-abt:21.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/34ccb9c7b62caa6d482db8e626c7a0e9/jetified-firebase-abt-21.0.0/AndroidManifest.xml:6:5-8:41
@@ -306,12 +319,12 @@ MERGED from [androidx.appcompat:appcompat:1.1.0] /Users/zarnibwar/.gradle/caches
 MERGED from [androidx.appcompat:appcompat:1.1.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/7a381ab645c1828f35cd39a445a33042/appcompat-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.browser:browser:1.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/afd2d987ef6a954ce95af3f20bd0f6cf/browser-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.browser:browser:1.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/afd2d987ef6a954ce95af3f20bd0f6cf/browser-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-database-collection:18.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/369c59889e801cc817dee2786a28ea2c/jetified-firebase-database-collection-18.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.firebase:firebase-database-collection:18.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/369c59889e801cc817dee2786a28ea2c/jetified-firebase-database-collection-18.0.0/AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.android.gms:play-services-auth-api-phone:17.4.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/4137babf2606acb1e424ad3914d5b8b3/jetified-play-services-auth-api-phone-17.4.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-auth-api-phone:17.4.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/4137babf2606acb1e424ad3914d5b8b3/jetified-play-services-auth-api-phone-17.4.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/f263fcb179e74220f9266564bf6fa6b0/jetified-play-services-safetynet-17.0.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/f263fcb179e74220f9266564bf6fa6b0/jetified-play-services-safetynet-17.0.0/AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-database-collection:18.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/369c59889e801cc817dee2786a28ea2c/jetified-firebase-database-collection-18.0.0/AndroidManifest.xml:5:5-7:41
-MERGED from [com.google.firebase:firebase-database-collection:18.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/369c59889e801cc817dee2786a28ea2c/jetified-firebase-database-collection-18.0.0/AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.android.gms:play-services-base:17.1.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/0813e45a0b3806629b40dbeb70c75a60/jetified-play-services-base-17.1.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-base:17.1.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/0813e45a0b3806629b40dbeb70c75a60/jetified-play-services-base-17.1.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-measurement:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/8450057caa35aac30a045729c438a3d4/jetified-play-services-measurement-20.0.0/AndroidManifest.xml:20:5-44
@@ -436,6 +449,8 @@ MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/zarnibwar/.gradle/
 MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/cb85e813550ceb859d5d8655b705694f/jetified-firebase-auth-21.0.1/AndroidManifest.xml:23:5-67
 MERGED from [com.google.firebase:firebase-firestore:24.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/875fba2a3c7d150fb639a449876b754f/jetified-firebase-firestore-24.0.0/AndroidManifest.xml:14:5-67
 MERGED from [com.google.firebase:firebase-firestore:24.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/875fba2a3c7d150fb639a449876b754f/jetified-firebase-firestore-24.0.0/AndroidManifest.xml:14:5-67
+MERGED from [com.google.firebase:firebase-storage:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/aac17191751d9819c4ba4efa4c4713d8/jetified-firebase-storage-20.0.0/AndroidManifest.xml:27:5-67
+MERGED from [com.google.firebase:firebase-storage:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/aac17191751d9819c4ba4efa4c4713d8/jetified-firebase-storage-20.0.0/AndroidManifest.xml:27:5-67
 MERGED from [com.google.android.gms:play-services-measurement-api:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/d8b5451fc82c883313b73938aa29c281/jetified-play-services-measurement-api-20.0.0/AndroidManifest.xml:22:5-67
 MERGED from [com.google.android.gms:play-services-measurement-api:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/d8b5451fc82c883313b73938aa29c281/jetified-play-services-measurement-api-20.0.0/AndroidManifest.xml:22:5-67
 MERGED from [com.google.firebase:firebase-installations:17.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/2b663374f2a3beef67e4fc09532fc190/jetified-firebase-installations-17.0.0/AndroidManifest.xml:11:5-67
@@ -451,9 +466,11 @@ MERGED from [com.google.android.gms:play-services-measurement-sdk-api:20.0.0] /U
 	android:name
 		ADDED from /Users/zarnibwar/Downloads/IOS Apps/cindy/android/app/src/debug/AndroidManifest.xml:6:22-64
 service#com.google.firebase.components.ComponentDiscoveryService
-ADDED from [:firebase_auth] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
-MERGED from [:cloud_firestore] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
-MERGED from [:cloud_firestore] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
+ADDED from [:cloud_firestore] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
+MERGED from [:firebase_auth] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
+MERGED from [:firebase_auth] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
+MERGED from [:firebase_storage] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
+MERGED from [:firebase_storage] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
 MERGED from [:firebase_messaging] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:33:9-37:19
 MERGED from [:firebase_messaging] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:33:9-37:19
 MERGED from [:firebase_core] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
@@ -470,6 +487,8 @@ MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/zarnibwar/.gradle/
 MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/cb85e813550ceb859d5d8655b705694f/jetified-firebase-auth-21.0.1/AndroidManifest.xml:74:9-80:19
 MERGED from [com.google.firebase:firebase-firestore:24.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/875fba2a3c7d150fb639a449876b754f/jetified-firebase-firestore-24.0.0/AndroidManifest.xml:17:9-23:19
 MERGED from [com.google.firebase:firebase-firestore:24.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/875fba2a3c7d150fb639a449876b754f/jetified-firebase-firestore-24.0.0/AndroidManifest.xml:17:9-23:19
+MERGED from [com.google.firebase:firebase-storage:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/aac17191751d9819c4ba4efa4c4713d8/jetified-firebase-storage-20.0.0/AndroidManifest.xml:30:9-36:19
+MERGED from [com.google.firebase:firebase-storage:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/aac17191751d9819c4ba4efa4c4713d8/jetified-firebase-storage-20.0.0/AndroidManifest.xml:30:9-36:19
 MERGED from [com.google.android.gms:play-services-measurement-api:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/d8b5451fc82c883313b73938aa29c281/jetified-play-services-measurement-api-20.0.0/AndroidManifest.xml:27:9-33:19
 MERGED from [com.google.android.gms:play-services-measurement-api:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/d8b5451fc82c883313b73938aa29c281/jetified-play-services-measurement-api-20.0.0/AndroidManifest.xml:27:9-33:19
 MERGED from [com.google.firebase:firebase-installations:17.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/2b663374f2a3beef67e4fc09532fc190/jetified-firebase-installations-17.0.0/AndroidManifest.xml:15:9-21:19
@@ -485,19 +504,25 @@ MERGED from [com.google.firebase:firebase-common:20.0.0] /Users/zarnibwar/.gradl
 	android:directBootAware
 		ADDED from [com.google.firebase:firebase-common:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/e8c12af64c0d197211b7d090cb61cdf8/jetified-firebase-common-20.0.0/AndroidManifest.xml:35:13-43
 	android:name
-		ADDED from [:firebase_auth] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:8:18-89
-meta-data#com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar
-ADDED from [:firebase_auth] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
-	android:value
-		ADDED from [:firebase_auth] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
-	android:name
-		ADDED from [:firebase_auth] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-124
+		ADDED from [:cloud_firestore] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:8:18-89
 meta-data#com.google.firebase.components:io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestoreRegistrar
 ADDED from [:cloud_firestore] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
 	android:value
 		ADDED from [:cloud_firestore] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
 	android:name
 		ADDED from [:cloud_firestore] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-134
+meta-data#com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar
+ADDED from [:firebase_auth] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
+	android:value
+		ADDED from [:firebase_auth] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
+	android:name
+		ADDED from [:firebase_auth] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-124
+meta-data#com.google.firebase.components:io.flutter.plugins.firebase.storage.FlutterFirebaseAppRegistrar
+ADDED from [:firebase_storage] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
+	android:value
+		ADDED from [:firebase_storage] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
+	android:name
+		ADDED from [:firebase_storage] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-126
 uses-permission#android.permission.WAKE_LOCK
 ADDED from [:firebase_messaging] /Users/zarnibwar/Downloads/IOS Apps/cindy/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:8:5-68
 MERGED from [com.google.firebase:firebase-messaging:23.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/955be42cb0286a736ff6d4ee15b76099/jetified-firebase-messaging-23.0.0/AndroidManifest.xml:23:5-68
@@ -530,6 +555,8 @@ MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/zarnibwar/.gradle/
 MERGED from [com.google.firebase:firebase-auth:21.0.1] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/cb85e813550ceb859d5d8655b705694f/jetified-firebase-auth-21.0.1/AndroidManifest.xml:24:5-79
 MERGED from [com.google.firebase:firebase-firestore:24.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/875fba2a3c7d150fb639a449876b754f/jetified-firebase-firestore-24.0.0/AndroidManifest.xml:13:5-79
 MERGED from [com.google.firebase:firebase-firestore:24.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/875fba2a3c7d150fb639a449876b754f/jetified-firebase-firestore-24.0.0/AndroidManifest.xml:13:5-79
+MERGED from [com.google.firebase:firebase-storage:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/aac17191751d9819c4ba4efa4c4713d8/jetified-firebase-storage-20.0.0/AndroidManifest.xml:26:5-79
+MERGED from [com.google.firebase:firebase-storage:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/aac17191751d9819c4ba4efa4c4713d8/jetified-firebase-storage-20.0.0/AndroidManifest.xml:26:5-79
 MERGED from [com.google.android.gms:play-services-measurement-api:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/d8b5451fc82c883313b73938aa29c281/jetified-play-services-measurement-api-20.0.0/AndroidManifest.xml:23:5-79
 MERGED from [com.google.android.gms:play-services-measurement-api:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/d8b5451fc82c883313b73938aa29c281/jetified-play-services-measurement-api-20.0.0/AndroidManifest.xml:23:5-79
 MERGED from [com.google.firebase:firebase-installations:17.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/2b663374f2a3beef67e4fc09532fc190/jetified-firebase-installations-17.0.0/AndroidManifest.xml:10:5-79
@@ -820,6 +847,12 @@ ADDED from [com.google.firebase:firebase-firestore:24.0.0] /Users/zarnibwar/.gra
 		ADDED from [com.google.firebase:firebase-firestore:24.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/875fba2a3c7d150fb639a449876b754f/jetified-firebase-firestore-24.0.0/AndroidManifest.xml:22:17-82
 	android:name
 		ADDED from [com.google.firebase:firebase-firestore:24.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/875fba2a3c7d150fb639a449876b754f/jetified-firebase-firestore-24.0.0/AndroidManifest.xml:21:17-111
+meta-data#com.google.firebase.components:com.google.firebase.storage.StorageRegistrar
+ADDED from [com.google.firebase:firebase-storage:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/aac17191751d9819c4ba4efa4c4713d8/jetified-firebase-storage-20.0.0/AndroidManifest.xml:33:13-35:85
+	android:value
+		ADDED from [com.google.firebase:firebase-storage:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/aac17191751d9819c4ba4efa4c4713d8/jetified-firebase-storage-20.0.0/AndroidManifest.xml:35:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-storage:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/aac17191751d9819c4ba4efa4c4713d8/jetified-firebase-storage-20.0.0/AndroidManifest.xml:34:17-107
 meta-data#com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar
 ADDED from [com.google.android.gms:play-services-measurement-api:20.0.0] /Users/zarnibwar/.gradle/caches/transforms-2/files-2.1/d8b5451fc82c883313b73938aa29c281/jetified-play-services-measurement-api-20.0.0/AndroidManifest.xml:30:13-32:85
 	android:value

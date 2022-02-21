@@ -11,44 +11,45 @@ class ProfileView extends StatelessWidget {
   Widget build(BuildContext context) {
     final HomeController controller = Get.find();
     return Obx(
-          () => controller.authorized.value
+      () => controller.authorized.value
           ? _LoginUser()
           : ListView(
-        children: [
-          Image.asset(
-            "assets/shopping.jpeg", height:200,),
-
-          Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
-            child: TextFormField(
-              controller: controller.phoneState.value
-                  ? controller.verificationController
-                  : controller.phoneController,
-              keyboardType: TextInputType.phone,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: controller.phoneState.value
-                    ? 'Enter your code'
-                    : 'Phone Number(+959***)',
-              ),
+              children: [
+                Image.asset(
+                  "assets/shopping.jpeg",
+                  height: 200,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+                  child: TextFormField(
+                    controller: controller.phoneState.value
+                        ? controller.verificationController
+                        : controller.phoneController,
+                    keyboardType: TextInputType.phone,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: controller.phoneState.value
+                          ? 'Enter your code'
+                          : 'Phone Number(+959***)',
+                    ),
+                  ),
+                ),
+                Container(
+                  width: double.infinity,
+                  height: 50,
+                  margin: const EdgeInsets.only(top: 20, right: 20, left: 20),
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(homeIndicatorColor),
+                    ),
+                    onPressed: controller.login,
+                    child: Text(
+                        controller.phoneState.value ? 'Verify' : 'Send Code'),
+                  ),
+                )
+              ],
             ),
-          ),
-          Container(
-            width: double.infinity,
-            height: 50,
-            margin: const EdgeInsets.only(top: 20, right: 20, left: 20),
-            child: ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor:
-                MaterialStateProperty.all(homeIndicatorColor),
-              ),
-              onPressed: controller.login,
-              child: Text(
-                  controller.phoneState.value ? 'Verify' : 'Send Code'),
-            ),
-          )
-        ],
-      ),
     );
   }
 }
@@ -86,7 +87,7 @@ class _LoginUser extends StatelessWidget {
                 //   ),
                 // ),
                 Obx(
-                      () => Text(
+                  () => Text(
                     _controller.user.value.user?.phoneNumber ?? '',
                     style: TextStyle(
                       fontSize: 20,
@@ -98,11 +99,7 @@ class _LoginUser extends StatelessWidget {
             ),
           ),
         ),
-        Obx(
-              () => _controller.user.value.isAdmin
-              ? Expanded(child: _AdminPanel())
-              : Spacer(),
-        ),
+        _AdminPanel(),
         Padding(
           padding: const EdgeInsets.only(bottom: 20),
           child: Center(
@@ -214,8 +211,10 @@ class _AdminPanel extends StatelessWidget {
                         backgroundColor: Colors.orange,
                         minRadius: 20,
                         maxRadius: 20,
-                        child: Text(controller.purhcases().length.toString(),
-                          style: TextStyle(color: Colors.black,fontSize: 14),)),
+                        child: Text(
+                          "${controller.purchcasesCashOn().length + controller.purchcasesPrePay().length}",
+                          style: TextStyle(color: Colors.black, fontSize: 14),
+                        )),
                   ],
                 ),
               ),

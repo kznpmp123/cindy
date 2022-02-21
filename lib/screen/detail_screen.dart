@@ -420,7 +420,10 @@ class _AddToCartState extends State<AddToCart> {
       children: [
         DropdownButtonFormField(
           value: colorValue,
-          hint: Text('Color', style: TextStyle(fontSize: 12),),
+          hint: Text(
+            'Color',
+            style: TextStyle(fontSize: 12),
+          ),
           onChanged: (String? e) {
             colorValue = e;
           },
@@ -428,7 +431,10 @@ class _AddToCartState extends State<AddToCart> {
               .split(',')
               .map((e) => DropdownMenuItem(
             value: e,
-            child: Text(e, style: TextStyle(fontSize: 12),),
+            child: Text(
+              e,
+              style: TextStyle(fontSize: 12),
+            ),
           ))
               .toList(),
         ),
@@ -437,7 +443,10 @@ class _AddToCartState extends State<AddToCart> {
         ),
         DropdownButtonFormField(
           value: sizeValue,
-          hint: Text("Size", style: TextStyle(fontSize: 12),),
+          hint: Text(
+            "Size",
+            style: TextStyle(fontSize: 12),
+          ),
           onChanged: (String? e) {
             sizeValue = e;
           },
@@ -445,17 +454,23 @@ class _AddToCartState extends State<AddToCart> {
               .split(',')
               .map((e) => DropdownMenuItem(
             value: e,
-            child: Text(e, style: TextStyle(fontSize: 12),),
+            child: Text(
+              e,
+              style: TextStyle(fontSize: 12),
+            ),
           ))
               .toList(),
         ),
-
+        SizedBox(
+          height: 10,
+        ),
         Padding(
           padding: const EdgeInsets.only(top: 30),
           child: ElevatedButton(
             style: buttonStyle,
             onPressed: () {
               if (colorValue != null && sizeValue != null) {
+                //controller.setShippingFee(fee!); //Set Shipping Fee
                 controller.addToCart(
                     controller.selectedItem.value, colorValue!, sizeValue!);
                 Get.to(HomeScreen());
@@ -466,6 +481,5 @@ class _AddToCartState extends State<AddToCart> {
         )
       ],
     );
-
   }
 }

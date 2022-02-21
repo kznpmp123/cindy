@@ -1,16 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/state_manager.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kozarni_ecome/data/constant.dart';
+import 'package:kozarni_ecome/data/enum.dart';
 import 'package:kozarni_ecome/model/item.dart';
 import 'package:kozarni_ecome/model/purchase.dart';
 import 'package:kozarni_ecome/model/user.dart';
 import 'package:kozarni_ecome/service/api.dart';
 import 'package:kozarni_ecome/service/auth.dart';
 import 'package:kozarni_ecome/service/database.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeController extends GetxController {
   final Auth _auth = Auth();
@@ -22,6 +26,15 @@ class HomeController extends GetxController {
   final Rx<AuthUser> user = AuthUser().obs;
 
   final RxBool phoneState = false.obs;
+  final codeSentOnWeb = false.obs; //codeSentOnWeb on Web
+  final TextEditingController _phoneCodeController =
+  TextEditingController(); //On Web
+  late SharedPreferences
+  sharedPref; //Share Preference to Store User's Order Data
+  String? shippingFee; //Shipping Fee
+  var paymentOptions = PaymentOptions.None.obs; //Payment Option Initial Value
+  var checkOutStep = 0.obs; //Check Out Step
+  var bankSlipImage = "".obs; //Bank Slip Image
 
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController verificationController = TextEditingController();
@@ -30,6 +43,27 @@ class HomeController extends GetxController {
   final RxInt _codeSentToken = 0.obs;
 
   final RxList<PurchaseItem> myCart = <PurchaseItem>[].obs;
+
+  //Set Shipping Fee
+  void setShippingFee(String? val) {
+    shippingFee = val!;
+    update();
+  }
+
+  //Change Payment Option
+  void changePaymentOptions(PaymentOptions option) {
+    paymentOptions.value = option;
+  }
+
+  //Change Step Index
+  void changeStepIndex(int value) {
+    checkOutStep.value = value;
+  }
+
+  //Set Bank Slip Image
+  void setBankSlipImage(String image) {
+    bankSlipImage.value = image;
+  }
 
   void addToCart(ItemModel itemModel, String color, String size) {
     try {
@@ -142,11 +176,12 @@ class HomeController extends GetxController {
   List<ItemModel> pickUp() =>
       items.where((e) => e.category == 'New Products').toList();
 
-  List<ItemModel> hot() => items.where((e) => e.category == 'Hot Sales').toList();
+  List<ItemModel> hot() =>
+      items.where((e) => e.category == 'Hot Sales').toList();
 
   void removeItem(String id) => items.removeWhere((item) => item.id == id);
 
-  int shipping() => myCart.isEmpty ? 0 : 2500;
+  //int shipping() => myCart.isEmpty ? 0 : shippingFee;
 
   void addCount(PurchaseItem p) {
     myCart.value = myCart.map((element) {
@@ -195,45 +230,46 @@ class HomeController extends GetxController {
     return price;
   }
 
-  final RxList<PurchaseModel> _purhcases = <PurchaseModel>[].obs;
+  final RxList<PurchaseModel> _purchcases = <PurchaseModel>[].obs; ////
 
-  List<PurchaseModel> purhcases() {
-    _purhcases.sort((a, b) => b.dateTime!.compareTo(a.dateTime!));
-    return _purhcases;
+  List<PurchaseModel> purchcasesCashOn() {
+    return _purchcases.where((item) => item.bankSlipImage == null).toList();
   }
+
+  List<PurchaseModel> purchcasesPrePay() {
+    return _purchcases.where((item) => item.bankSlipImage != null).toList();
+  } //////////////////
 
   final RxBool isLoading = false.obs;
 
-  Future<void> proceedToPay({
-    required String name,
-    required String email,
-    required int phone,
-    required String address,
-  }) async {
+  Future<void> proceedToPay() async {
     if (isLoading.value) return;
     isLoading.value = true;
+    Get.back();
     try {
-      final PurchaseModel _purchase = PurchaseModel(
+      final list = getUserOrderData();
+      final _purchase = PurchaseModel(
         items: myCart
             .map(
                 (cart) => "${cart.id},${cart.color},${cart.size},${cart.count}")
             .toList(),
-        name: name,
-        email: email,
-        phone: phone,
-        address: address,
+        name: list[0],
+        email: list[1],
+        phone: int.parse(list[2]),
+        address: list[3],
+        bankSlipImage: bankSlipImage.value.isEmpty ? null : bankSlipImage.value,
       );
-
-      await _database.write(
-        purchaseCollection,
-        data: _purchase.toJson(),
-      );
+      await _database.writePurchaseData(_purchase).then((value) {
+        Get.snackbar("လူကြီးမင်း Order တင်ခြင်း", 'အောင်မြင်ပါသည်');
+      }); //submit success
       myCart.clear();
       navIndex.value = 0;
       update([myCart, navIndex]);
     } catch (e) {
+      Get.snackbar("လူကြီးမင်း Order တင်ခြင်း", 'မအောင်မြင်ပါ');
       print("proceed to pay error $e");
     }
+    //Get.back();
     isLoading.value = false;
   }
 
@@ -243,18 +279,30 @@ class HomeController extends GetxController {
         await confirm();
         return;
       }
-      await _auth.login(
-        phoneNumber: phoneController.text,
-        verificationCompleted: (PhoneAuthCredential phoneAuthCredential) {},
-        codeAutoRetrievalTimeout: (String verificationId) {},
-        codeSent: (String verificationId, int? forceResendingToken) {
-          _codeSentId.value = verificationId;
-          _codeSentToken.value = forceResendingToken ?? 0;
-          update([_codeSentId, _codeSentToken]);
-        },
-        verificationFailed: (FirebaseAuthException error) {},
-      );
-      phoneState.value = true;
+      //Change method base on Platform Conditionally
+      if (kIsWeb) {
+        debugPrint("Web Sign In"); //Debug Print
+        //web login
+        await _auth.loginInWeb(
+          phoneNumber: phoneController.text,
+          enterCode: (callBack) => showDialogToEnterPhoneCode(
+                (phoneCode) => callBack(phoneCode),
+          ),
+        ); //FOR WEB SIGNIN WITH PHONE
+      } else {
+        await _auth.login(
+          phoneNumber: phoneController.text,
+          verificationCompleted: (PhoneAuthCredential phoneAuthCredential) {},
+          codeAutoRetrievalTimeout: (String verificationId) {},
+          codeSent: (String verificationId, int? forceResendingToken) {
+            _codeSentId.value = verificationId;
+            _codeSentToken.value = forceResendingToken ?? 0;
+            update([_codeSentId, _codeSentToken]);
+          },
+          verificationFailed: (FirebaseAuthException error) {},
+        );
+        phoneState.value = true;
+      }
     } catch (e) {
       print("login error $e");
     }
@@ -311,9 +359,42 @@ class HomeController extends GetxController {
     }
   }
 
+  //Get User's Order Data
+  List<String> getUserOrderData() {
+    return sharedPref.getStringList("userOrder") ?? [];
+  }
+
+  //Set User's Order Data or Not
+  Future<void> setUserOrderData({
+    required String name,
+    required String email,
+    required String phone,
+    required String address,
+  }) async {
+    //Making Purchase Model
+    try {} catch (e) {}
+    final list = getUserOrderData();
+    //Check data already contain with the same data inside SharedPreference
+    if (list.isEmpty) {
+      await sharedPref
+          .setStringList("userOrder", [name, email, phone, address]);
+    } else if ( //Something is changed by User,then we restore
+    (name != list[0]) ||
+        (email != list[1]) ||
+        (phone != list[2]) ||
+        (address != list[3])) {
+      await sharedPref
+          .setStringList("userOrder", [name, email, phone, address]);
+    }
+  }
+
   @override
-  void onInit() {
+  void onInit() async {
     super.onInit();
+    sharedPref = await SharedPreferences.getInstance();
+    if (getUserOrderData().isNotEmpty) {
+      checkOutStep.value = 1;
+    } // SharedPreference to Stroe
     _database.watch(itemCollection).listen((event) {
       items.value =
           event.docs.map((e) => ItemModel.fromJson(e.data(), e.id)).toList();
@@ -324,8 +405,6 @@ class HomeController extends GetxController {
         authorized.value = false;
       } else {
         authorized.value = true;
-
-        //Admin Feature
         await _database.write(
           userCollection,
           data: {
@@ -334,9 +413,6 @@ class HomeController extends GetxController {
           },
           path: _.uid,
         );
-
-        //
-
         final DocumentSnapshot<Map<String, dynamic>> _data =
         await _database.read(userCollection, path: _.uid);
         user.value = user.value.update(
@@ -348,11 +424,11 @@ class HomeController extends GetxController {
           newProfileImage: _profile.data()?['link'],
         );
         if (user.value.isAdmin) {
-          _database.watch(purchaseCollection).listen((event) {
+          _database.watchOrder(purchaseCollection).listen((event) {
             if (event.docs.isEmpty) {
-              _purhcases.clear();
+              _purchcases.clear();
             } else {
-              _purhcases.value = event.docs
+              _purchcases.value = event.docs
                   .map((e) => PurchaseModel.fromJson(e.data(), e.id))
                   .toList();
             }
@@ -389,5 +465,47 @@ class HomeController extends GetxController {
 
   void searchItem(String name) {
     isSearch.value = !isSearch.value;
+  }
+
+  //Check weather show dialog or not
+  showDialogToEnterPhoneCode(void Function(String code) callBack) {
+    final size = MediaQuery.of(Get.context!).size;
+    Get.defaultDialog(
+      title: "Phone Verification",
+      content: SizedBox(
+        height: size.height * 0.2,
+        width: size.width * 0.2,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              //Text FIELD
+              Padding(
+                padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+                child: TextFormField(
+                  controller: _phoneCodeController,
+                  keyboardType: TextInputType.phone,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Enter your code',
+                  ),
+                ),
+              ),
+              //Space
+              const SizedBox(height: 10),
+              //CONFIRM
+              TextButton(
+                onPressed: () {
+                  //CALL BACK TO ORIGINAL SIGNINWITHPHONENUMBER
+                  callBack(_phoneCodeController.text);
+                  Get.back();
+                },
+                child: Text("Confirm"),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

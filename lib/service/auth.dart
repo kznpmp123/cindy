@@ -19,6 +19,24 @@ class Auth {
         codeSent: codeSent,
         codeAutoRetrievalTimeout: codeAutoRetrievalTimeout,
       );
+  //Login with phone number in Web
+  Future<void> loginInWeb({
+    required String phoneNumber,
+    required void Function(void Function(String code)) enterCode,
+  }) async {
+    await _firebaseAuth
+        .signInWithPhoneNumber(phoneNumber)
+        .then((confirmationResult) {
+      //Confirm with phone code
+      enterCode((phoneCode) {
+        //The time user have filled phone code and pressed confirm
+        confirmationResult
+            .confirm(phoneCode) //CONFIRM
+            .then((value) => _firebaseAuth.signInWithCredential(
+                value.credential!)); //SIGN IN WITH CREDENTIAL
+      });
+    });
+  }
 
   Future<void> loginWithCerdential(AuthCredential credential) =>
       _firebaseAuth.signInWithCredential(credential);

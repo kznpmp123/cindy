@@ -83,12 +83,11 @@ class BottomNav extends StatelessWidget {
 
             Expanded(
               child: IconButton(
-                onPressed: () => launch("tel://095322405"),
+                onPressed: () {
+                },
                 icon: FaIcon(
                   FontAwesomeIcons.solidHeart,
-                  color: controller.navIndex.value == 4
-                      ? homeIndicatorColor
-                      : Colors.black,
+                  color: Colors.red,
                 ),
               ),
             ),
