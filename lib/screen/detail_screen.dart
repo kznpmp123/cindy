@@ -15,385 +15,407 @@ class DetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final HomeController controller = Get.find();
 
-    return Scaffold(
-      backgroundColor: detailTextBackgroundColor,
-      appBar: AppBar(
-        title: Text(controller.selectedItem.value.name,
-          style: TextStyle(color: Colors.black,
-              fontWeight: FontWeight.bold,
-              fontSize: 16),),
-        elevation: 0,
-        backgroundColor: detailBackgroundColor,
-        leading: IconButton(
-          onPressed: Get.back,
-          icon: Icon(
-            Icons.arrow_back,
-            color: Colors.black87,
-          ),
-        ),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: detailTextBackgroundColor,
+        body: NestedScrollView(
+          headerSliverBuilder: (
+          (BuildContext context, bool innerBoxIsScrolled) {
+            return <Widget>[
+              SliverOverlapAbsorber(
+                handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+                sliver: SliverAppBar(
+                  backgroundColor: detailBackgroundColor,
+                  leading: IconButton(
+                        onPressed: Get.back,
+                        icon: Icon(
+                          Icons.arrow_back,
+                          color: Colors.black87,
+                        ),
+                      ),
+                  expandedHeight: 400,
+                  flexibleSpace: FlexibleSpaceBar(
+                    title: Text(
+                      controller.selectedItem.value.name,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16),),
+
+                    background: ClipRRect(
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(30),
+                        bottomRight: Radius.circular(30),),
+                      child: Hero(
+                        tag: controller.selectedItem.value.photo,
+                        child: CarouselSlider(
+                          items: [
+                            CachedNetworkImage(
+                              imageUrl: controller.selectedItem.value.photo,
+                              // "$baseUrl$itemUrl${controller.selectedItem.value.photo}/get",
+                              height: double.infinity,
+                              fit: BoxFit.cover,
+                            ),
+
+                            CachedNetworkImage(
+                              imageUrl: controller.selectedItem.value.photo2,
+                              // "$baseUrl$itemUrl${controller.selectedItem.value.photo}/get",
+                              height: double.infinity,
+                              fit: BoxFit.cover,
+                            ),
+
+                            CachedNetworkImage(
+                              imageUrl: controller.selectedItem.value.photo3,
+                              // "$baseUrl$itemUrl${controller.selectedItem.value.photo}/get",
+                              height: double.infinity,
+                              fit: BoxFit.cover,
+                            ),
+                          ],
+
+                          options: CarouselOptions(
+                            height: 400,
+                            viewportFraction: 0.8,
+                            initialPage: 0,
+                            enableInfiniteScroll: true,
+                            autoPlay: true,
+                            autoPlayInterval: Duration(seconds: 3),
+                            autoPlayAnimationDuration: Duration(
+                                milliseconds: 800),
+                            autoPlayCurve: Curves.fastOutSlowIn,
+                            enlargeCenterPage: true,
+                            scrollDirection: Axis.horizontal,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  floating: true,
+                  snap: true,
+                  pinned: true,
+                ),
+              ),
+            ];
+          }
       ),
-      body: ListView(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(30),
-              bottomRight: Radius.circular(30),),
-              child: Hero(
-                tag: controller.selectedItem.value.photo,
-                child: CarouselSlider(
-                  items: [
-                    CachedNetworkImage(
-                      imageUrl: controller.selectedItem.value.photo,
-                      // "$baseUrl$itemUrl${controller.selectedItem.value.photo}/get",
-                      height: double.infinity,
-                      fit: BoxFit.cover,
-                    ),
 
-                    CachedNetworkImage(
-                      imageUrl: controller.selectedItem.value.photo2,
-                      // "$baseUrl$itemUrl${controller.selectedItem.value.photo}/get",
-                      height: double.infinity,
-                      fit: BoxFit.cover,
-                    ),
+        body: ListView(
+          children: [
+            
+            Container(
+              margin: EdgeInsets.only(top: 10),
+              width: double.infinity,
+              padding: EdgeInsets.only(
+                left: 20,
+                right: 20,
+                bottom: 10,
+              ),
+              decoration: BoxDecoration(
+                color: detailTextBackgroundColor,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 20,
+                  ),
 
-                    CachedNetworkImage(
-                      imageUrl: controller.selectedItem.value.photo3,
-                      // "$baseUrl$itemUrl${controller.selectedItem.value.photo}/get",
-                      height: double.infinity,
-                      fit: BoxFit.cover,
+                  Text(controller.selectedItem.value.name,
+                    style: TextStyle(color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16),),
+
+                  SizedBox(height: 20),
+
+                  Row(
+                    children: List.generate(
+                      5,
+                          (index) => Icon(
+                        Icons.star,
+                        size: 20,
+                        color: index <= controller.selectedItem.value.star
+                            ? homeIndicatorColor
+                            : Colors.grey,
+                      ),
                     ),
+                  ),
+
+                  SizedBox(
+                    height: 20,
+                  ),
+
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+
+                      Text("Category    : ",
+                        style: TextStyle(color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16),),
+
+
+
+
+                      Text(
+                        controller.selectedItem.value.category,
+                        style: TextStyle(color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16),),
+                    ],),
+
+                  SizedBox(
+                    height: 20,
+                  ),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+
+                  Text("Sale Price   : ",
+                    style: TextStyle(color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16),),
+
+                  Text(
+                    "${controller.selectedItem.value.discountprice} Kyats",
+                    style: TextStyle(
+                      decoration: TextDecoration.lineThrough,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.red,
+                    ),
+                  ),
+
+                  Text("${controller.selectedItem.value.price} Kyats",
+                    style: TextStyle(color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16),
+                  ),
+
+
                   ],
-
-                    options: CarouselOptions(
-                      height: 400,
-                      viewportFraction: 0.8,
-                      initialPage: 0,
-                      enableInfiniteScroll: true,
-                      autoPlay: true,
-                      autoPlayInterval: Duration(seconds: 3),
-                      autoPlayAnimationDuration: Duration(milliseconds: 800),
-                      autoPlayCurve: Curves.fastOutSlowIn,
-                      enlargeCenterPage: true,
-                      scrollDirection: Axis.horizontal,
-                    )
-
-                ),
               ),
-            ),
 
-          Container(
-            margin: EdgeInsets.only(top: 10),
-            width: double.infinity,
-            padding: EdgeInsets.only(
-              left: 20,
-              right: 20,
-              bottom: 10,
-            ),
-            decoration: BoxDecoration(
-              color: detailTextBackgroundColor,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
-              ),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 20,
-                ),
-
-                Text(controller.selectedItem.value.name,
-                  style: TextStyle(color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16),),
-
-                SizedBox(height: 20),
-
-                Row(
-                  children: List.generate(
-                    5,
-                        (index) => Icon(
-                      Icons.star,
-                      size: 20,
-                      color: index <= controller.selectedItem.value.star
-                          ? homeIndicatorColor
-                          : Colors.grey,
-                    ),
+                  SizedBox(
+                    height: 10,
                   ),
-                ),
 
-                SizedBox(
-                  height: 20,
-                ),
+                  ExpandedWidget(text: controller.selectedItem.value.desc,),
 
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-
-                    Text("Category    : ",
-                      style: TextStyle(color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16),),
-
-
-
-
-                    Text(
-                      controller.selectedItem.value.category,
-                      style: TextStyle(color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16),),
-                  ],),
-
-                SizedBox(
-                  height: 20,
-                ),
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-
-                Text("Sale Price   : ",
-                  style: TextStyle(color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16),),
-
-                Text(
-                  "${controller.selectedItem.value.discountprice} Kyats",
-                  style: TextStyle(
-                    decoration: TextDecoration.lineThrough,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.red,
+                  SizedBox(
+                    height: 30,
                   ),
-                ),
 
-                Text("${controller.selectedItem.value.price} Kyats",
-                  style: TextStyle(color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16),
-                ),
-
-
-                ],
-            ),
-
-                SizedBox(
-                  height: 10,
-                ),
-
-                ExpandedWidget(text: controller.selectedItem.value.desc,),
-
-                SizedBox(
-                  height: 30,
-                ),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      children: [
-                        Text(
-                          "⏰ Delivery Time",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          controller.selectedItem.value.deliverytime,
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
-                        )
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Text(
-                          "💁 Availability ",
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        children: [
+                          Text(
+                            "⏰ Delivery Time",
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
                               color: Colors.grey,
                             ),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          controller.selectedItem.value.brand,
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
                           ),
-                        )
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          "📞 Contact Phone ",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey,
+                          SizedBox(
+                            height: 5,
                           ),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          "     09 7777 0 222 8",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
-                          ),
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(height: 30),
-
-
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 30),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child: CachedNetworkImage(
-                          imageUrl: controller.selectedItem.value.photo2,
-                          width: 150,
-                          height: 150,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 40,
-                    ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 30),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: CachedNetworkImage(
-                                imageUrl: controller.selectedItem.value.photo3,
-                                width: 150,
-                                height: 150,
-                                fit: BoxFit.cover,
-                              ),
+                          Text(
+                            controller.selectedItem.value.deliverytime,
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
                             ),
-                          ),
+                          )
                         ],
                       ),
-                    ),
-                  ],
-                ),
+                      Column(
+                        children: [
+                          Text(
+                            "💁 Availability ",
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey,
+                              ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            controller.selectedItem.value.brand,
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          )
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            "📞 Contact Phone ",
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            "     09 7777 0 222 8",
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                            ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 30),
 
 
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          "🏠 Shop - 1  ( Thanlyin )",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey,
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 30),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: CachedNetworkImage(
+                            imageUrl: controller.selectedItem.value.photo2,
+                            width: 150,
+                            height: 150,
+                            fit: BoxFit.cover,
                           ),
                         ),
-                        SizedBox(
-                          height: 5,
+                      ),
+                      SizedBox(
+                        width: 40,
+                      ),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 30),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(8),
+                                child: CachedNetworkImage(
+                                  imageUrl: controller.selectedItem.value.photo3,
+                                  width: 150,
+                                  height: 150,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                        Text(
-                          'အမှတ် 116 ၊ သတိပဌာန်လမ်း ၊ မြို့မတောင်ရပ်ကွက် ၊ သန်လျင်မြို့နယ် ၊ ရန်ကုန်မြို့။',
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.black,
+                      ),
+                    ],
+                  ),
+
+
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            "🏠 Shop - 1  ( Thanlyin )",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey,
+                            ),
                           ),
-                        )
-                      ],
-                    ),
-
-                SizedBox(
-                  height: 20,
-                ),
-
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      "🏠 Shop - 2  ( Dawbon )",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.grey,
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            'အမှတ် 116 ၊ သတိပဌာန်လမ်း ၊ မြို့မတောင်ရပ်ကွက် ၊ သန်လျင်မြို့နယ် ၊ ရန်ကုန်မြို့။',
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: Colors.black,
+                            ),
+                          )
+                        ],
                       ),
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      'အမှတ် 192 ၊ ယမုံနာလမ်း ၊ ဇေယျာသီရိရပ်ကွက်, ဒေါပုံမြို့နယ် ။ (မာန်ပြေကားဂိတ်နားမရောက်ခင်...ဇေယျာသီရိ ၈ လမ်းထိပ်)',
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.black,
-                      ),
-                    )
-                  ],
-                ),
-                  ],
-                ),
-          )
-        ],
-      ),
-      bottomNavigationBar:
-      Container(
 
-        width: double.infinity,
-        height: 65,
-        // decoration: BoxDecoration(
-        //   color: detailBackgroundColor,
-        //   borderRadius: BorderRadius.only(
-        //     topLeft: Radius.circular(20),
-        //     topRight: Radius.circular(20),
-        //   ),
-        // ),
-        padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
-        child: ElevatedButton(
-          style: buttonStyle,
-          onPressed: () {
-            Get.defaultDialog(
-              titlePadding: EdgeInsets.all(0),
-              contentPadding: EdgeInsets.only(left: 20, right: 20, bottom: 10),
-              radius: 0,
-              title: '',
-              content: AddToCart(),
-            );
-          },
-          child: Text("၀ယ်ယူရန်"),
+                  SizedBox(
+                    height: 20,
+                  ),
+
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        "🏠 Shop - 2  ( Dawbon )",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        'အမှတ် 192 ၊ ယမုံနာလမ်း ၊ ဇေယျာသီရိရပ်ကွက်, ဒေါပုံမြို့နယ် ။ (မာန်ပြေကားဂိတ်နားမရောက်ခင်...ဇေယျာသီရိ ၈ လမ်းထိပ်)',
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.black,
+                        ),
+                      )
+                    ],
+                  ),
+                    ],
+                  ),
+            ),
+          ],
+        ),),
+
+
+        bottomNavigationBar:
+        Container(
+          width: double.infinity,
+          height: 65,
+          // decoration: BoxDecoration(
+          //   color: detailBackgroundColor,
+          //   borderRadius: BorderRadius.only(
+          //     topLeft: Radius.circular(20),
+          //     topRight: Radius.circular(20),
+          //   ),
+          // ),
+          padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+          child: ElevatedButton(
+            style: buttonStyle,
+            onPressed: () {
+              Get.defaultDialog(
+                titlePadding: EdgeInsets.all(0),
+                contentPadding: EdgeInsets.only(left: 20, right: 20, bottom: 10),
+                radius: 0,
+                title: '',
+                content: AddToCart(),
+              );
+            },
+            child: Text("၀ယ်ယူရန်"),
+          ),
         ),
       ),
     );
@@ -478,7 +500,7 @@ class _AddToCartState extends State<AddToCart> {
             },
             child: Text("၀ယ်ယူရန်"),
           ),
-        )
+        ),
       ],
     );
   }
