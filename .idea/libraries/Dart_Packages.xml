@@ -142,6 +142,13 @@
             </list>
           </value>
         </entry>
+        <entry key="custom_full_image_screen">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../../flutter_macos_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/custom_full_image_screen-0.0.4/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="dbus">
           <value>
             <list>
@@ -816,6 +823,7 @@
       <root url="file://$PROJECT_DIR$/../../flutter_macos_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/cross_file-0.3.2/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter_macos_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/crypto-3.0.1/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter_macos_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-1.0.3/lib" />
+      <root url="file://$PROJECT_DIR$/../../flutter_macos_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/custom_full_image_screen-0.0.4/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter_macos_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/dbus-0.5.6/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter_macos_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/dio-4.0.1/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter_macos_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/dots_indicator-2.1.0/lib" />

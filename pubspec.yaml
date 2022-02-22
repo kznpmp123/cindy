@@ -54,6 +54,7 @@ dependencies:
   uuid: ^3.0.6
   firebase_storage:
   shared_preferences: ^2.0.13
+  custom_full_image_screen: ^0.0.4
 
 
 
