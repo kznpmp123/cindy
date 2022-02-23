@@ -62,61 +62,63 @@ class _LoginUser extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final HomeController _controller = Get.find();
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          width: double.infinity,
-          height: 200,
-          padding: EdgeInsets.only(left: 20, right: 20),
-          margin: EdgeInsets.only(top: 20),
-          child: Card(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 20,
-                    bottom: 20,
-                  ),
-                  child: Image.asset(
-                    "assets/shopping.jpeg",
-                    width: 100,
-                    height: 100,
-                  ),
-                ),
-                //   ),
-                // ),
-                Obx(
-                  () => Text(
-                    _controller.user.value.user?.phoneNumber ?? '',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            width: double.infinity,
+            height: 200,
+            padding: EdgeInsets.only(left: 20, right: 20),
+            margin: EdgeInsets.only(top: 20),
+            child: Card(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 20,
+                      bottom: 20,
+                    ),
+                    child: Image.asset(
+                      "assets/shopping.jpeg",
+                      width: 100,
+                      height: 100,
                     ),
                   ),
-                ),
-              ],
+                  //   ),
+                  // ),
+                  Obx(
+                    () => Text(
+                      _controller.user.value.user?.phoneNumber ?? '',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-        _AdminPanel(),
-        Padding(
-          padding: const EdgeInsets.only(top:30, bottom: 20),
-          child: Center(
-            child: GestureDetector(
-              onTap: _controller.logout,
-              child: Text(
-                "Logout",
-                style: TextStyle(
-                  fontSize: 16,
-                  color: homeIndicatorColor,
-                  fontWeight: FontWeight.bold,
+          _AdminPanel(),
+          Padding(
+            padding: const EdgeInsets.only(top: 30, bottom: 20),
+            child: Center(
+              child: GestureDetector(
+                onTap: _controller.logout,
+                child: Text(
+                  "Logout",
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: homeIndicatorColor,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

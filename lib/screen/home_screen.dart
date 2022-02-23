@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:kozarni_ecome/controller/home_controller.dart';
 import 'package:kozarni_ecome/data/constant.dart';
 import 'package:kozarni_ecome/screen/view/cart.dart';
+import 'package:kozarni_ecome/screen/view/favourite.dart';
 import 'package:kozarni_ecome/screen/view/hot.dart';
 import 'package:kozarni_ecome/screen/view/home.dart';
 import 'package:kozarni_ecome/widgets/bottom_nav.dart';
@@ -17,6 +18,7 @@ List<Widget> _template = [
   HomeView(),
   HotView(),
   CartView(),
+  FavouriteView(),
   ProfileView(),
 ];
 
@@ -30,7 +32,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   FirebaseMessaging messaging = FirebaseMessaging.instance;
   FlutterLocalNotificationsPlugin? fltNotification;
-
 
   @override
   void initState() {
@@ -53,10 +54,13 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void initMessaging() async {
-
     var androiInit = AndroidInitializationSettings('@mipmap/ic_launcher');
 
-    var iosInit = IOSInitializationSettings(requestAlertPermission: true,requestBadgePermission: true,requestSoundPermission: true,);
+    var iosInit = IOSInitializationSettings(
+      requestAlertPermission: true,
+      requestBadgePermission: true,
+      requestSoundPermission: true,
+    );
 
     var initSetting = InitializationSettings(android: androiInit, iOS: iosInit);
 
@@ -64,30 +68,31 @@ class _HomeScreenState extends State<HomeScreen> {
 
     fltNotification!.initialize(initSetting);
 
-
     if (messaging != null) {
       print('vvvvvvv');
     }
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       showNotification(message);
-
     });
 
-    FirebaseMessaging.onMessageOpenedApp.listen((event) {
-    });
+    FirebaseMessaging.onMessageOpenedApp.listen((event) {});
   }
-
 
   void showNotification(RemoteMessage message) async {
-    var androidDetails = AndroidNotificationDetails('1', message.notification!.title ?? '',icon: '@mipmap/ic_launcher',color:  Color(0xFF0f90f3),);
+    var androidDetails = AndroidNotificationDetails(
+      '1',
+      message.notification!.title ?? '',
+      icon: '@mipmap/ic_launcher',
+      color: Color(0xFF0f90f3),
+    );
     var iosDetails = IOSNotificationDetails();
-    var generalNotificationDetails = NotificationDetails(android: androidDetails, iOS: iosDetails);
+    var generalNotificationDetails =
+        NotificationDetails(android: androidDetails, iOS: iosDetails);
     await fltNotification!.show(0, message.notification!.title ?? '',
-        message.notification!.body ?? '',generalNotificationDetails,
+        message.notification!.body ?? '', generalNotificationDetails,
         payload: 'Notification');
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -146,33 +151,35 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   )
                 : ElevatedButton(
-              style: ButtonStyle(
-                alignment: Alignment.center,
-                backgroundColor: MaterialStateProperty.all(Colors.white),
-                elevation: MaterialStateProperty.resolveWith<double>(  // As you said you dont need elevation. I'm returning 0 in both case
-                      (Set<MaterialState> states) {
-                    if (states.contains(MaterialState.disabled)) {
-                      return 0;
-                    }
-                    return 0; // Defer to the widget's default.
-                  },
-                ),
-              ),
-              onPressed: controller.search,
-              child: FaIcon(
-                FontAwesomeIcons.search,
-                color: Colors.black,
-                size: 20,
-              ),
-            ),
+                    style: ButtonStyle(
+                      alignment: Alignment.center,
+                      backgroundColor: MaterialStateProperty.all(Colors.white),
+                      elevation: MaterialStateProperty.resolveWith<double>(
+                        // As you said you dont need elevation. I'm returning 0 in both case
+                        (Set<MaterialState> states) {
+                          if (states.contains(MaterialState.disabled)) {
+                            return 0;
+                          }
+                          return 0; // Defer to the widget's default.
+                        },
+                      ),
+                    ),
+                    onPressed: controller.search,
+                    child: FaIcon(
+                      FontAwesomeIcons.search,
+                      color: Colors.black,
+                      size: 20,
+                    ),
                   ),
+          ),
 
           ElevatedButton(
             style: ButtonStyle(
               alignment: Alignment.center,
               backgroundColor: MaterialStateProperty.all(Colors.white),
-              elevation: MaterialStateProperty.resolveWith<double>(  // As you said you dont need elevation. I'm returning 0 in both case
-                    (Set<MaterialState> states) {
+              elevation: MaterialStateProperty.resolveWith<double>(
+                // As you said you dont need elevation. I'm returning 0 in both case
+                (Set<MaterialState> states) {
                   if (states.contains(MaterialState.disabled)) {
                     return 0;
                   }

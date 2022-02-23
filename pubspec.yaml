@@ -55,11 +55,15 @@ dependencies:
   firebase_storage:
   shared_preferences: ^2.0.13
   custom_full_image_screen: ^0.0.4
-
+  hive: ^2.0.5
+  hive_flutter: ^1.1.0
 
 
 
 dev_dependencies:
+  hive_generator: ^1.1.2
+  build_runner: ^2.1.7
+
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: "^0.9.2"

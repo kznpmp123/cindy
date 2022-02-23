@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:custom_full_image_screen/custom_full_image_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kozarni_ecome/controller/home_controller.dart';
 import 'package:kozarni_ecome/data/constant.dart';
 import 'package:kozarni_ecome/model/purchase.dart';
+import 'package:kozarni_ecome/model/township.dart';
 
 class PurchaseScreen extends StatelessWidget {
   const PurchaseScreen({Key? key}) : super(key: key);
@@ -18,7 +18,7 @@ class PurchaseScreen extends StatelessWidget {
         backgroundColor: scaffoldBackground,
         appBar: AppBar(
           title: Text(
-            "𝐂𝐢𝐧𝐝𝐲 Branded Export Fashion",
+            "Begonia Clothing Brand",
             style: TextStyle(color: Colors.black, fontSize: 14),
           ),
           elevation: 5,
@@ -54,40 +54,40 @@ class PurchaseScreen extends StatelessWidget {
     HomeController controller = Get.find();
     return ListView.builder(
       itemCount: controller.purchcasesCashOn().length,
-      itemBuilder: (_, i) => ListTile(
-        title: Text(
-            "${controller.purchcasesCashOn()[i].name} 0${controller.purchcasesCashOn()[i].phone}"),
-        subtitle: Text(
-            "${controller.purchcasesCashOn()[i].dateTime?.day}/${controller.purchcasesCashOn()[i].dateTime?.month}/${controller.purchcasesCashOn()[i].dateTime?.year}"),
-        trailing: IconButton(
-          onPressed: () {
-            int total = 0;
-            int shipping = 2500;
+      itemBuilder: (_, i) {
+        Township town = controller.purchcasesCashOn()[i].township;
+        final shipping = town.fee;
+        final townName = town.name;
+        return ListTile(
+          title: Text(
+              "${controller.purchcasesCashOn()[i].name} 0${controller.purchcasesCashOn()[i].phone}"),
+          subtitle: Text(
+              "${controller.purchcasesCashOn()[i].dateTime?.day}/${controller.purchcasesCashOn()[i].dateTime?.month}/${controller.purchcasesCashOn()[i].dateTime?.year}"),
+          trailing: IconButton(
+            onPressed: () {
+              int total = 0;
+              for (var item in controller.purchcasesCashOn()[i].items) {
+                total += int.parse(item.toString().split(',').last) *
+                    int.parse(item.toString().split(',')[3]);
+              }
 
-            for (var item in controller.purchcasesCashOn()[i].items) {
-              total += controller
-                      .getItem(
-                        item.toString().split(',')[0],
-                      )
-                      .price *
-                  int.parse(item.toString().split(',').last);
-            }
-
-            print(controller.purchcasesCashOn()[i].items.length);
-            Get.defaultDialog(
-              title: "Customer ၀ယ်ယူခဲ့သော အချက်အလက်များ",
-              titleStyle: TextStyle(fontSize: 12),
-              radius: 5,
-              content: purchaseDialogBox(
-                  i: i,
-                  total: total,
-                  shipping: shipping,
-                  list: controller.purchcasesPrePay()),
-            );
-          },
-          icon: Icon(Icons.info),
-        ),
-      ),
+              print(controller.purchcasesCashOn()[i].items.length);
+              Get.defaultDialog(
+                title: "Customer ၀ယ်ယူခဲ့သော အချက်အလက်များ",
+                titleStyle: TextStyle(fontSize: 12),
+                radius: 5,
+                content: purchaseDialogBox(
+                    i: i,
+                    total: total,
+                    shipping: shipping,
+                    township: townName,
+                    list: controller.purchcasesCashOn()),
+              );
+            },
+            icon: Icon(Icons.info),
+          ),
+        );
+      },
     );
   }
 
@@ -95,89 +95,62 @@ class PurchaseScreen extends StatelessWidget {
     HomeController controller = Get.find();
     return ListView.builder(
       itemCount: controller.purchcasesPrePay().length,
-      itemBuilder: (_, i) => ListTile(
-        title: Text(
-            "${controller.purchcasesPrePay()[i].name} 0${controller.purchcasesPrePay()[i].phone}"),
-        subtitle: Text(
-            "${controller.purchcasesPrePay()[i].dateTime?.day}/${controller.purchcasesPrePay()[i].dateTime?.month}/${controller.purchcasesPrePay()[i].dateTime?.year}"),
-        trailing: !(controller.purchcasesPrePay()[i].bankSlipImage == null)
-            ? InkWell(
-                onTap: () {
-                  int total = 0;
-                  int shipping = int.parse(controller.shippingFee!);
+      itemBuilder: (_, i) {
+        Township town = controller.purchcasesPrePay()[i].township;
+        final shipping = town.fee;
+        final townName = town.name;
+        return ListTile(
+          title: Text(
+              "${controller.purchcasesPrePay()[i].name} 0${controller.purchcasesPrePay()[i].phone}"),
+          subtitle: Text(
+              "${controller.purchcasesPrePay()[i].dateTime?.day}/${controller.purchcasesPrePay()[i].dateTime?.month}/${controller.purchcasesPrePay()[i].dateTime?.year}"),
+          trailing: !(controller.purchcasesPrePay()[i].bankSlipImage == null)
+              ? InkWell(
+                  onTap: () {
+                    int total = 0;
+                    for (var item in controller.purchcasesPrePay()[i].items) {
+                      total += int.parse(item.toString().split(',').last) *
+                          int.parse(item.toString().split(',')[3]);
+                    }
 
-                  for (var item in controller.purchcasesPrePay()[i].items) {
-                    total += controller
-                            .getItem(
-                              item.toString().split(',')[0],
-                            )
-                            .price *
-                        int.parse(item.toString().split(',').last);
-                  }
-
-                  print(controller.purchcasesPrePay()[i].items.length);
-                  Get.defaultDialog(
-                    title: "Customer ၀ယ်ယူခဲ့သော အချက်အလက်များ",
-                    titleStyle: TextStyle(fontSize: 12),
-                    radius: 5,
-                    content: purchaseDialogBox(
-                        i: i,
-                        total: total,
-                        shipping: shipping,
-                        list: controller.purchcasesPrePay()),
-                  );
-                },
-                child: AspectRatio(
-                  aspectRatio: 1,
-                  child: CachedNetworkImage(
-                    imageUrl:
-                        controller.purchcasesPrePay()[i].bankSlipImage ?? "",
-                    fit: BoxFit.fill,
-                    progressIndicatorBuilder: (context, url, status) {
-                      return Center(
-                        child: SizedBox(
-                          width: 50,
-                          height: 50,
-                          child: CircularProgressIndicator(
-                            value: status.progress,
+                    print(controller.purchcasesPrePay()[i].items.length);
+                    Get.defaultDialog(
+                      title: "Customer ၀ယ်ယူခဲ့သော အချက်အလက်များ",
+                      titleStyle: TextStyle(fontSize: 12),
+                      radius: 5,
+                      content: purchaseDialogBox(
+                          i: i,
+                          total: total,
+                          shipping: shipping,
+                          township: townName,
+                          list: controller.purchcasesPrePay()),
+                    );
+                  },
+                  child: AspectRatio(
+                    aspectRatio: 1,
+                    child: CachedNetworkImage(
+                      imageUrl:
+                          controller.purchcasesPrePay()[i].bankSlipImage ?? "",
+                      fit: BoxFit.fill,
+                      progressIndicatorBuilder: (context, url, status) {
+                        return Center(
+                          child: SizedBox(
+                            width: 50,
+                            height: 50,
+                            child: CircularProgressIndicator(
+                              value: status.progress,
+                            ),
                           ),
-                        ),
-                      );
-                    },
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
+                        );
+                      },
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
+                    ),
                   ),
-                ),
-              )
-            : IconButton(
-                onPressed: () {
-                  int total = 0;
-                  int shipping = 2500;
-
-                  for (var item in controller.purchcasesPrePay()[i].items) {
-                    total += controller
-                            .getItem(
-                              item.toString().split(',')[0],
-                            )
-                            .price *
-                        int.parse(item.toString().split(',').last);
-                  }
-
-                  print(controller.purchcasesPrePay()[i].items.length);
-                  Get.defaultDialog(
-                    title: "Customer ၀ယ်ယူခဲ့သော အချက်အလက်များ",
-                    titleStyle: TextStyle(fontSize: 12),
-                    radius: 5,
-                    content: purchaseDialogBox(
-                        i: i,
-                        total: total,
-                        shipping: shipping,
-                        list: controller.purchcasesPrePay()),
-                  );
-                },
-                icon: Icon(Icons.info),
-              ),
-      ),
+                )
+              : SizedBox(height: 0, width: 0),
+        );
+      },
     );
   }
 
@@ -185,9 +158,16 @@ class PurchaseScreen extends StatelessWidget {
     required int i,
     required int total,
     required int shipping,
+    required String township,
     required List<PurchaseModel> list,
   }) {
     HomeController controller = Get.find();
+    /*final deliTownShip = townshipList
+        .where(
+          (town) => town.fee == shipping,
+        )
+        .first
+        .name;*/
     return Column(
       children: [
         // Row(
@@ -305,15 +285,28 @@ class PurchaseScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "${controller.getItem(
-                          list[i].items[o].toString().split(',')[0],
-                        ).price} x ${list[i].items[o].toString().split(',').last} ထည်",
+                    "${list[i].items[o].toString().split(',').last} x  ${list[i].items[o].toString().split(',')[3]} ထည်",
                     style: TextStyle(fontSize: 10),
                   ),
                 ],
               ),
             ),
           ),
+        ),
+        //Delivery Township
+        Row(
+          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "ပို့ဆောင်ရမည့်မြို့နယ် -",
+              style: TextStyle(fontSize: 14),
+            ),
+            SizedBox(width: 10),
+            Text(
+              township,
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+            ),
+          ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

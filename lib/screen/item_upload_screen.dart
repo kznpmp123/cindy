@@ -206,7 +206,7 @@ class _UploadItemState extends State<UploadItem> {
                 validator: controller.validator,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
-                  hintText: 'ပုံမှန် စျေးနှုန်း',
+                  hintText: 'တစ်ထည်ဈေး (Ratail)',
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -224,7 +224,7 @@ class _UploadItemState extends State<UploadItem> {
                 validator: controller.validator,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
-                  hintText: 'ရောင်းချမည့် စျေးနှုန်း',
+                  hintText: 'နှစ်ထည်ဈေး (Wholesale)',
                   border: OutlineInputBorder(),
                 ),
               ),

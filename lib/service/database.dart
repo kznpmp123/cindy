@@ -36,6 +36,29 @@ class Database {
   //Write PurchaseData
   Future<void> writePurchaseData(PurchaseModel model) async {
     if (!(model.bankSlipImage == null)) {
+      final file = File(model.bankSlipImage!);
+      debugPrint("**************${model.bankSlipImage!}");
+      try {
+        await _firebaseStorage
+            .ref()
+            .child("bankSlip/${Uuid().v1()}")
+            .putFile(file)
+            .then((snapshot) async {
+          await snapshot.ref.getDownloadURL().then((value) async {
+            final purchaseModel = model.copyWith(bankSlipImage: value).toJson();
+            //Then we set this user into Firestore
+            await _firebaseFirestore
+                .collection(purchaseCollection)
+                .doc()
+                .set(purchaseModel);
+          });
+        });
+      } on FirebaseException catch (e) {
+        debugPrint("*******Image Upload Error $e******");
+      }
+    }
+    ////////////////////////
+    /* if (!(model.bankSlipImage == null)) {
       //if image is not empty or null,we need to store Image FILE
       final file = File(model.bankSlipImage!);
       try {
@@ -57,7 +80,8 @@ class Database {
         debugPrint(
             "**************PurchaseSubmitError and BankSlip $e************");
       }
-    } else {
+    }*/
+    else {
       try {
         _firebaseFirestore
             .collection(purchaseCollection)

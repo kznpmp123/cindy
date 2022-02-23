@@ -50,10 +50,9 @@ class BottomNav extends StatelessWidget {
                 onPressed: () {
                   controller.changeNav(1);
                 },
-                icon: Image.asset("assets/hotsale.png",
-                  color: controller.navIndex.value == 1
-                      ? null
-                      : Colors.black,
+                icon: Image.asset(
+                  "assets/hotsale.png",
+                  color: controller.navIndex.value == 1 ? null : Colors.black,
                 ),
               ),
             ),
@@ -71,19 +70,21 @@ class BottomNav extends StatelessWidget {
                           : null,
                     ),
                     CircleAvatar(
-
-                      backgroundColor: Colors.orange,
+                        backgroundColor: Colors.orange,
                         minRadius: 0,
                         maxRadius: 30,
-                        child: Text(controller.myCart.length.toString(),style: TextStyle(color: Colors.black,fontSize: 14),)),
+                        child: Text(
+                          controller.myCart.length.toString(),
+                          style: TextStyle(color: Colors.black, fontSize: 14),
+                        )),
                   ],
                 ),
               ),
             ),
-
             Expanded(
               child: IconButton(
                 onPressed: () {
+                  controller.changeNav(3);
                 },
                 icon: FaIcon(
                   FontAwesomeIcons.solidHeart,
@@ -91,11 +92,10 @@ class BottomNav extends StatelessWidget {
                 ),
               ),
             ),
-
             Expanded(
               child: IconButton(
                 onPressed: () {
-                  controller.changeNav(3);
+                  controller.changeNav(4);
                 },
                 icon: FaIcon(
                   FontAwesomeIcons.solidUser,
@@ -105,8 +105,6 @@ class BottomNav extends StatelessWidget {
                 ),
               ),
             ),
-
-
           ],
         ),
       ),

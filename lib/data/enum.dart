@@ -3,3 +3,8 @@ enum PaymentOptions {
   PrePay,
   None,
 }
+
+enum Price{
+  Retail,
+  WholeSale,
+}

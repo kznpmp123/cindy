@@ -18,3 +18,8 @@ const String userCollection = 'users';
 const String profileCollection = 'profiles';
 const String itemCollection = 'items';
 const String purchaseCollection = 'purchases';
+const List<String> priceList = [
+  'တစ်ထည်ဈေး (Ratail)',
+  'နှစ်ထည်ဈေး (Wholesale)',
+];
+const String boxName = "favouriteBOX";

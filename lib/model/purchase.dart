@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:kozarni_ecome/model/township.dart';
 
 class PurchaseModel {
   final String? id;
@@ -8,6 +9,7 @@ class PurchaseModel {
   final int phone;
   final String address;
   final String? bankSlipImage;
+  final Township township;
   final DateTime? dateTime;
 
   PurchaseModel({
@@ -17,6 +19,7 @@ class PurchaseModel {
     required this.email,
     required this.phone,
     required this.address,
+    required this.township,
     required this.bankSlipImage,
     this.dateTime,
   });
@@ -30,6 +33,7 @@ class PurchaseModel {
     int? phone,
     String? address,
     String? bankSlipImage,
+    Township? township,
     DateTime? dateTime,
   }) =>
       PurchaseModel(
@@ -38,6 +42,7 @@ class PurchaseModel {
         email: email ?? this.email,
         phone: phone ?? this.phone,
         address: address ?? this.address,
+        township: township ?? this.township,
         bankSlipImage: bankSlipImage ?? this.bankSlipImage,
       );
 
@@ -50,6 +55,7 @@ class PurchaseModel {
         phone: json['phone'] as int,
         address: json['address'] as String,
         bankSlipImage: json['bankSlipImage'] as String?,
+        township: Township.fromJson(json['township']),
         dateTime: (json['dateTime'] as Timestamp).toDate(),
       );
 
@@ -65,6 +71,7 @@ class PurchaseModel {
         'phone': phone,
         'address': address,
         'bankSlipImage': bankSlipImage,
+        'township': township.toJson(),
         'dateTime': dateTime ?? DateTime.now(),
       };
 }

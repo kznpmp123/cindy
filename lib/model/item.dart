@@ -50,8 +50,6 @@ class ItemModel {
         category: json['category'] as String,
       );
 
-
-
   Map<String, dynamic> toJson() => {
         'photo': photo,
         'photo2': photo2,
@@ -82,8 +80,6 @@ class ItemModel {
     String? newSize,
     int? newStar,
     String? newCategory,
-
-
   }) =>
       ItemModel(
         id: id,
@@ -108,6 +104,7 @@ class PurchaseItem {
   final int count;
   final String size;
   final String color;
+  final int price;
 
-  PurchaseItem(this.id, this.count, this.size, this.color);
+  PurchaseItem(this.id, this.count, this.size, this.color, this.price);
 }

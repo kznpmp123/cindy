@@ -8,8 +8,10 @@ import 'package:get/state_manager.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kozarni_ecome/data/constant.dart';
 import 'package:kozarni_ecome/data/enum.dart';
+import 'package:kozarni_ecome/model/hive_item.dart';
 import 'package:kozarni_ecome/model/item.dart';
 import 'package:kozarni_ecome/model/purchase.dart';
+import 'package:kozarni_ecome/model/township.dart';
 import 'package:kozarni_ecome/model/user.dart';
 import 'package:kozarni_ecome/service/api.dart';
 import 'package:kozarni_ecome/service/auth.dart';
@@ -28,13 +30,14 @@ class HomeController extends GetxController {
   final RxBool phoneState = false.obs;
   final codeSentOnWeb = false.obs; //codeSentOnWeb on Web
   final TextEditingController _phoneCodeController =
-  TextEditingController(); //On Web
+      TextEditingController(); //On Web
   late SharedPreferences
-  sharedPref; //Share Preference to Store User's Order Data
-  String? shippingFee; //Shipping Fee
+      sharedPref; //Share Preference to Store User's Order Data
+  String? townshipName; //Township Name
   var paymentOptions = PaymentOptions.None.obs; //Payment Option Initial Value
   var checkOutStep = 0.obs; //Check Out Step
-  var bankSlipImage = "".obs; //Bank Slip Image
+  var bankSlipImage = "".obs;
+  Township? township;
 
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController verificationController = TextEditingController();
@@ -45,8 +48,14 @@ class HomeController extends GetxController {
   final RxList<PurchaseItem> myCart = <PurchaseItem>[].obs;
 
   //Set Shipping Fee
-  void setShippingFee(String? val) {
-    shippingFee = val!;
+  void setTownshipName(String? val) {
+    townshipName = val!;
+    update();
+  }
+
+  //Set Township Name
+  void setTownship(Township value) {
+    township = value;
     update();
   }
 
@@ -65,11 +74,14 @@ class HomeController extends GetxController {
     bankSlipImage.value = image;
   }
 
-  void addToCart(ItemModel itemModel, String color, String size) {
+  void addToCart(ItemModel itemModel, String color, String size, int price) {
     try {
       final PurchaseItem _item = myCart.firstWhere(
-            (item) =>
-        item.id == itemModel.id && item.color == color && item.size == size,
+        (item) =>
+            item.id == itemModel.id &&
+            item.color == color &&
+            item.size == size &&
+            item.price == price,
       );
       myCart.value = myCart.map((element) {
         if (_item.id == element.id) {
@@ -78,12 +90,13 @@ class HomeController extends GetxController {
             element.count + 1,
             element.size,
             element.color,
+            element.price,
           );
         }
         return element;
       }).toList();
     } catch (e) {
-      myCart.add(PurchaseItem(itemModel.id!, 1, size, color));
+      myCart.add(PurchaseItem(itemModel.id!, 1, size, color, price));
     }
   }
 
@@ -92,19 +105,19 @@ class HomeController extends GetxController {
   final RxList<ItemModel> searchitems = <ItemModel>[].obs;
 
   final Rx<ItemModel> selectedItem = ItemModel(
-      photo: '',
-      photo2:'',
-      photo3:'',
-      deliverytime: '',
-      brand: '',
-      discountprice: 0,
-      name: '',
-      price: 0,
-      color: '',
-      desc: '',
-      size: '',
-      star: 0,
-      category: '')
+          photo: '',
+          photo2: '',
+          photo3: '',
+          deliverytime: '',
+          brand: '',
+          discountprice: 0,
+          name: '',
+          price: 0,
+          color: '',
+          desc: '',
+          size: '',
+          star: 0,
+          category: '')
       .obs;
 
   void setSelectedItem(ItemModel item) {
@@ -113,8 +126,8 @@ class HomeController extends GetxController {
 
   final Rx<ItemModel> editItem = ItemModel(
     photo: '',
-    photo2:'',
-    photo3:'',
+    photo2: '',
+    photo3: '',
     deliverytime: '',
     brand: '',
     discountprice: 0,
@@ -137,8 +150,8 @@ class HomeController extends GetxController {
     } catch (e) {
       return ItemModel(
           photo: '',
-          photo2:'',
-          photo3:'',
+          photo2: '',
+          photo3: '',
           deliverytime: '',
           brand: '',
           discountprice: 0,
@@ -189,11 +202,17 @@ class HomeController extends GetxController {
           element.color == p.color &&
           element.size == p.size) {
         return PurchaseItem(
-            element.id, element.count + 1, element.size, element.color);
+          element.id,
+          element.count + 1,
+          element.size,
+          element.color,
+          element.price,
+        );
       }
       return element;
     }).toList();
     update([myCart]);
+    updateSubTotal(true);
   }
 
   void remove(PurchaseItem p) {
@@ -203,8 +222,8 @@ class HomeController extends GetxController {
           element.color == p.color &&
           element.size == p.size) {
         if (element.count > 1) {
-          return PurchaseItem(
-              element.id, element.count - 1, element.size, element.color);
+          return PurchaseItem(element.id, element.count - 1, element.size,
+              element.color, element.price);
         }
         needToRemove = true;
         return element;
@@ -213,22 +232,73 @@ class HomeController extends GetxController {
     }).toList();
     if (needToRemove) {
       myCart.removeWhere((element) =>
-      element.id == p.id &&
+          element.id == p.id &&
           element.color == p.color &&
           element.size == p.size);
     }
+    updateSubTotal(true);
   }
 
-  int get subTotal {
+  int subTotal = 0;
+  void updateSubTotal(bool isUpdate) {
+    if (subTotal != 0) {
+      subTotal = 0;
+    }
     int price = 0;
     for (var i = 0; i < myCart.length; i++) {
-      print(items.firstWhere((element) => element.id == myCart[i].id).price);
-      price += items.firstWhere((element) => element.id == myCart[i].id).price *
-          myCart[i].count;
+      //print(items.firstWhere((element) => element.id == myCart[i].id).price);
+      debugPrint("**********each price:$i: ${myCart[i].price}");
+      /* price += items.firstWhere((element) => element.id == myCart[i].id).price *
+          myCart[i].count;*/
+      price += myCart[i].price * myCart[i].count;
     }
-
-    return price;
+    subTotal = price;
+    debugPrint("*************$subTotal");
+    if (isUpdate) {
+      update();
+    }
   }
+
+  //Get HiveItem
+  HiveItem changeHiveItem(ItemModel model) {
+    return HiveItem(
+      id: model.id ?? "",
+      photo: model.photo,
+      photo2: model.photo2,
+      photo3: model.photo3,
+      name: model.name,
+      brand: model.brand,
+      deliverytime: model.deliverytime,
+      price: model.price,
+      discountprice: model.discountprice,
+      desc: model.desc,
+      color: model.color,
+      size: model.size,
+      star: model.star,
+      category: model.category,
+    );
+  }
+
+  //Get ItemModel
+  ItemModel changeItemModel(HiveItem model) {
+    return ItemModel(
+      id: model.id,
+      photo: model.photo,
+      photo2: model.photo2,
+      photo3: model.photo3,
+      name: model.name,
+      brand: model.brand,
+      deliverytime: model.deliverytime,
+      price: model.price,
+      discountprice: model.discountprice,
+      desc: model.desc,
+      color: model.color,
+      size: model.size,
+      star: model.star,
+      category: model.category,
+    );
+  }
+
 
   final RxList<PurchaseModel> _purchcases = <PurchaseModel>[].obs; ////
 
@@ -250,14 +320,15 @@ class HomeController extends GetxController {
       final list = getUserOrderData();
       final _purchase = PurchaseModel(
         items: myCart
-            .map(
-                (cart) => "${cart.id},${cart.color},${cart.size},${cart.count}")
+            .map((cart) =>
+                "${cart.id},${cart.color},${cart.size},${cart.count},${cart.price}")
             .toList(),
         name: list[0],
         email: list[1],
         phone: int.parse(list[2]),
         address: list[3],
         bankSlipImage: bankSlipImage.value.isEmpty ? null : bankSlipImage.value,
+        township: township!,
       );
       await _database.writePurchaseData(_purchase).then((value) {
         Get.snackbar("လူကြီးမင်း Order တင်ခြင်း", 'အောင်မြင်ပါသည်');
@@ -286,7 +357,7 @@ class HomeController extends GetxController {
         await _auth.loginInWeb(
           phoneNumber: phoneController.text,
           enterCode: (callBack) => showDialogToEnterPhoneCode(
-                (phoneCode) => callBack(phoneCode),
+            (phoneCode) => callBack(phoneCode),
           ),
         ); //FOR WEB SIGNIN WITH PHONE
       } else {
@@ -334,7 +405,7 @@ class HomeController extends GetxController {
   Future<void> uploadProfile() async {
     try {
       final XFile? _file =
-      await _imagePicker.pickImage(source: ImageSource.gallery);
+          await _imagePicker.pickImage(source: ImageSource.gallery);
 
       if (_file != null) {
         await _api.uploadFile(
@@ -379,10 +450,10 @@ class HomeController extends GetxController {
       await sharedPref
           .setStringList("userOrder", [name, email, phone, address]);
     } else if ( //Something is changed by User,then we restore
-    (name != list[0]) ||
-        (email != list[1]) ||
-        (phone != list[2]) ||
-        (address != list[3])) {
+        (name != list[0]) ||
+            (email != list[1]) ||
+            (phone != list[2]) ||
+            (address != list[3])) {
       await sharedPref
           .setStringList("userOrder", [name, email, phone, address]);
     }
@@ -414,12 +485,12 @@ class HomeController extends GetxController {
           path: _.uid,
         );
         final DocumentSnapshot<Map<String, dynamic>> _data =
-        await _database.read(userCollection, path: _.uid);
+            await _database.read(userCollection, path: _.uid);
         user.value = user.value.update(
           newIsAdmin: _data.exists,
         );
         final DocumentSnapshot<Map<String, dynamic>> _profile =
-        await _database.read(profileCollection, path: _.uid);
+            await _database.read(profileCollection, path: _.uid);
         user.value = user.value.update(
           newProfileImage: _profile.data()?['link'],
         );
