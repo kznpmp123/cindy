@@ -46,7 +46,7 @@ class HotView extends StatelessWidget {
                         height: 5,
                       ),
                       Text(
-                        "${controller.hot()[i].price}  Ks",
+                        "${controller.hot()[i].discountprice}  Ks",
                         style: TextStyle(
                           color: homeIndicatorColor,
                           fontSize: 16,

@@ -18,7 +18,7 @@ class PurchaseScreen extends StatelessWidget {
         backgroundColor: scaffoldBackground,
         appBar: AppBar(
           title: Text(
-            "Begonia Clothing Brand",
+            "𝐂𝐢𝐧𝐝𝐲 Branded Export Fashion",
             style: TextStyle(color: Colors.black, fontSize: 14),
           ),
           elevation: 5,

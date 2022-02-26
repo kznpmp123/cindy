@@ -266,7 +266,7 @@ class CartView extends StatelessWidget {
                   backgroundColor: Colors.white70,
                   titlePadding: EdgeInsets.all(8),
                   contentPadding: EdgeInsets.all(0),
-                  title: "Choose Options",
+                  title: "ငွေချေမည့် နည်းလမ်း",
                   content: PaymentOptionContent(),
                   barrierDismissible: false,
                   confirm: nextButton(),
@@ -290,22 +290,22 @@ class PaymentOptionContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 20, right: 20),
+      padding: const EdgeInsets.only(left: 5, right: 5),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         CustomCheckBox(
-          height: 50,
+          height: 60,
           options: PaymentOptions.CashOnDelivery,
           icon: FontAwesomeIcons.truck,
           iconColor: Colors.amber,
-          text: "Cash On Delivery",
+          text: "ပစ္စည်း ရောက်မှ ငွေချေမယ်",
         ),
         SizedBox(height: 5),
         CustomCheckBox(
           height: 50,
           options: PaymentOptions.PrePay,
-          icon: FontAwesomeIcons.piggyBank,
+          icon: FontAwesomeIcons.dollarSign,
           iconColor: Colors.blue,
-          text: "Pre-Pay",
+          text: "Bank မှ တဆင့် ငွေကြိုလွှဲမယ်",
         ),
       ]),
     );
@@ -319,7 +319,7 @@ Widget nextButton() {
     height: 50,
     width: double.infinity,
     decoration: BoxDecoration(
-      color: Colors.pink,
+      color: Colors.orange,
       borderRadius: BorderRadius.only(
         bottomLeft: Radius.circular(20),
         bottomRight: Radius.circular(20),
@@ -333,7 +333,7 @@ Widget nextButton() {
           Get.toNamed(checkOutScreen);
         }
       },
-      child: Text("Next➡", style: TextStyle(color: Colors.white)),
+      child: Text("Next  ➡", style: TextStyle(color: Colors.white)),
     ),
   );
 }

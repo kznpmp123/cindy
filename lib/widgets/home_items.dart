@@ -54,37 +54,37 @@ class HomeItems extends StatelessWidget {
                               fit: BoxFit.cover,
                             ),
                           ),
-                            ValueListenableBuilder(
-                              valueListenable:
-                              Hive.box<HiveItem>(boxName).listenable(),
-                              builder: (context, Box<HiveItem> box, widget) {
-                                final currentObj =
-                                box.get(controller.selectedItem.value.id);
-
-                                if (!(currentObj == null)) {
-                                  return IconButton(
-                                      onPressed: () {
-                                        box.delete(currentObj.id);
-                                      },
-                                      icon: Icon(
-                                        FontAwesomeIcons.solidHeart,
-                                        color: Colors.red,
-                                        size: 20,
-                                      ));
-                                }
-                                return IconButton(
-                                    onPressed: () {
-                                      box.put(
-                                          controller.selectedItem.value.id,
-                                          controller.changeHiveItem(controller.selectedItem.value));
-                                    },
-                                    icon: Icon(
-                                      Icons.favorite_outline,
-                                      color: Colors.red,
-                                      size: 20,
-                                    ));
-                              },
-                            ),
+                            // ValueListenableBuilder(
+                            //   valueListenable:
+                            //   Hive.box<HiveItem>(boxName).listenable(),
+                            //   builder: (context, Box<HiveItem> box, widget) {
+                            //     final currentObj =
+                            //     box.get(controller.selectedItem.value.id);
+                            //
+                            //     if (!(currentObj == null)) {
+                            //       return IconButton(
+                            //           onPressed: () {
+                            //             box.delete(currentObj.id);
+                            //           },
+                            //           icon: Icon(
+                            //             FontAwesomeIcons.solidHeart,
+                            //             color: Colors.red,
+                            //             size: 20,
+                            //           ));
+                            //     }
+                            //     return IconButton(
+                            //         onPressed: () {
+                            //           box.put(
+                            //               controller.selectedItem.value.id,
+                            //               controller.changeHiveItem(controller.selectedItem.value));
+                            //         },
+                            //         icon: Icon(
+                            //           Icons.favorite_outline,
+                            //           color: Colors.red,
+                            //           size: 20,
+                            //         ));
+                            //   },
+                            // ),
                          ],
                         ),
                       ),
