@@ -88,7 +88,9 @@ class BottomNav extends StatelessWidget {
                 },
                 icon: FaIcon(
                   FontAwesomeIcons.solidHeart,
-                  color: Colors.red,
+                  color: controller.navIndex.value == 3
+                  ? homeIndicatorColor
+                  : null,
                 ),
               ),
             ),
@@ -99,7 +101,7 @@ class BottomNav extends StatelessWidget {
                 },
                 icon: FaIcon(
                   FontAwesomeIcons.solidUser,
-                  color: controller.navIndex.value == 3
+                  color: controller.navIndex.value == 4
                       ? homeIndicatorColor
                       : null,
                 ),
