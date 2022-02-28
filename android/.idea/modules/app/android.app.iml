@@ -224,7 +224,6 @@
     <orderEntry type="module" module-name="android.firebase_auth" />
     <orderEntry type="module" module-name="android.firebase_storage" />
     <orderEntry type="module" module-name="android.firebase_messaging" />
-    <orderEntry type="module" module-name="io.flutter.plugins.firebase.core.android.firebase_core" />
     <orderEntry type="module" module-name="android.flutter_plugin_android_lifecycle" />
     <orderEntry type="module" module-name="android.sqflite" />
     <orderEntry type="module" module-name="android.image_picker" />

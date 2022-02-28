@@ -299,9 +299,9 @@ class PaymentOptionContent extends StatelessWidget {
           iconColor: Colors.amber,
           text: "ပစ္စည်း ရောက်မှ ငွေချေမယ်",
         ),
-        SizedBox(height: 5),
+        SizedBox(height: 10),
         CustomCheckBox(
-          height: 50,
+          height: 60,
           options: PaymentOptions.PrePay,
           icon: FontAwesomeIcons.dollarSign,
           iconColor: Colors.blue,
@@ -316,13 +316,13 @@ Widget nextButton() {
   HomeController controller = Get.find();
   return //Next
       Container(
-    height: 50,
+    height: 55,
     width: double.infinity,
     decoration: BoxDecoration(
       color: Colors.orange,
       borderRadius: BorderRadius.only(
-        bottomLeft: Radius.circular(20),
-        bottomRight: Radius.circular(20),
+        bottomLeft: Radius.circular(10),
+        bottomRight: Radius.circular(10),
       ),
     ),
     child: TextButton(
@@ -333,7 +333,7 @@ Widget nextButton() {
           Get.toNamed(checkOutScreen);
         }
       },
-      child: Text("Next  ➡", style: TextStyle(color: Colors.white)),
+      child: Text("OK", style: TextStyle(color: Colors.white)),
     ),
   );
 }

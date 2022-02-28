@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
     initMessaging();
   }
 
-  void notitficationPermission() async {
+  Future<void> notitficationPermission() async {
     await messaging.requestPermission(
       alert: true,
       announcement: false,

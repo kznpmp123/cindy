@@ -195,7 +195,7 @@ class DetailScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "နှစ်ထည်ဈေး (Wholesale)   : ",
+                          controller.selectedItem.value.deliverytime,
                           style: TextStyle(
                               color: Colors.red,
                               fontWeight: FontWeight.bold,
@@ -236,8 +236,7 @@ class DetailScreen extends StatelessWidget {
                             SizedBox(
                               height: 5,
                             ),
-                            Text(
-                              controller.selectedItem.value.deliverytime,
+                            Text("Within 3 Days",
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,

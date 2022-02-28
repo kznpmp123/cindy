@@ -15,9 +15,12 @@ class ProfileView extends StatelessWidget {
           ? _LoginUser()
           : ListView(
               children: [
-                Image.asset(
-                  "assets/shopping.jpeg",
-                  height: 200,
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.asset(
+                    "assets/shopping.jpeg",
+                    height: 200,
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
@@ -79,10 +82,13 @@ class _LoginUser extends StatelessWidget {
                       top: 20,
                       bottom: 20,
                     ),
-                    child: Image.asset(
-                      "assets/shopping.jpeg",
-                      width: 100,
-                      height: 100,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.asset(
+                        "assets/shopping.jpeg",
+                        width: 100,
+                        height: 100,
+                      ),
                     ),
                   ),
                   //   ),
