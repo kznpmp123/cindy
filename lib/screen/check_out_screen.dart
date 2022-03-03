@@ -102,7 +102,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                 Step(
                   isActive: controller.checkOutStep >= 1,
                   state: StepState.indexed,
-                  title: Text("Payment"),
+                  title: Text("Pay Method"),
                   content: controller.paymentOptions == PaymentOptions.PrePay
                       ? prePayWidget(context)
                       : SizedBox(height: 0, width: 0),
@@ -134,7 +134,7 @@ Widget prePayWidget(BuildContext context) {
           ),
         )),
         onPressed: () => getBankSlip(controller),
-        child: Text("Choose Bank Slip"),
+        child: Text("Choose KBZ / AYA / WAVE Screenshot"),
       ),
       //Image String
       Obx(() => SizedBox(

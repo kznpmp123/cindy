@@ -328,8 +328,8 @@ class CartView extends StatelessWidget {
                 },
                 child: AnimatedContainer(
                   color: controller.mouseIndex == divisionIndex
-                      ? Colors.white
-                      : Colors.grey[400],
+                      ? Colors.orange
+                      : Colors.white,
                   duration: const Duration(milliseconds: 200),
                   child:
                       Row(mainAxisAlignment: MainAxisAlignment.end, children: [
@@ -361,7 +361,7 @@ class CartView extends StatelessWidget {
             left: BorderSide(),
             right: BorderSide(),
           ),
-          color: Colors.grey[400],
+          color: Colors.white,
         ),
         child: ListView(
           children: division.townShipMap.entries.map((map) {
@@ -401,7 +401,7 @@ class PaymentOptionContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 20, right: 20),
+      padding: const EdgeInsets.only(left: 10, right: 10),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         CustomCheckBox(
           height: 50,
@@ -414,7 +414,7 @@ class PaymentOptionContent extends StatelessWidget {
         CustomCheckBox(
           height: 50,
           options: PaymentOptions.PrePay,
-          icon: FontAwesomeIcons.piggyBank,
+          icon: FontAwesomeIcons.moneyBill,
           iconColor: Colors.blue,
           text: "Pre-Pay",
         ),
@@ -430,7 +430,7 @@ Widget nextButton() {
     height: 50,
     width: double.infinity,
     decoration: BoxDecoration(
-      color: Colors.pink,
+      color: Colors.orange,
       borderRadius: BorderRadius.only(
         bottomLeft: Radius.circular(20),
         bottomRight: Radius.circular(20),
@@ -444,7 +444,7 @@ Widget nextButton() {
           Get.toNamed(checkOutScreen);
         }
       },
-      child: Text("Next➡", style: TextStyle(color: Colors.white)),
+      child: Text("Next  ➡", style: TextStyle(color: Colors.white)),
     ),
   );
 }
