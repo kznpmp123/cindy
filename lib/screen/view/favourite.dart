@@ -52,13 +52,16 @@ class _FavouriteViewState extends State<FavouriteView> {
                                 ),
                               ),
                               subtitle: Text("${hiveItem.price} kyats"),
-                              trailing: Hero(
-                                tag: hiveItem.photo,
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                  child: CachedNetworkImage(
-                                    imageUrl: hiveItem.photo,
-                                    fit: BoxFit.cover,
+                              trailing: AspectRatio(
+                                aspectRatio: 1,
+                                child: Hero(
+                                  tag: hiveItem.photo,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    child: CachedNetworkImage(
+                                      imageUrl: hiveItem.photo,
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
                               ),

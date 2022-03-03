@@ -32,6 +32,8 @@ class HiveItem {
   int star;
   @HiveField(13)
   String category;
+  @HiveField(14)
+  bool isOwnBrand;
   HiveItem({
     required this.id,
     required this.photo,
@@ -47,5 +49,6 @@ class HiveItem {
     required this.size,
     required this.star,
     required this.category,
+    required this.isOwnBrand,
   });
 }

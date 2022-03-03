@@ -6,7 +6,7 @@ import 'package:kozarni_ecome/data/constant.dart';
 import 'package:kozarni_ecome/routes/routes.dart';
 import 'package:get/get.dart';
 
-class HomePickUp extends StatelessWidget {
+/*class HomePickUp extends StatelessWidget {
   const HomePickUp({Key? key}) : super(key: key);
 
   @override
@@ -80,4 +80,4 @@ class HomePickUp extends StatelessWidget {
       ),
     );
   }
-}
+}*/

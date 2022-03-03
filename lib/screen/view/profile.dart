@@ -15,12 +15,9 @@ class ProfileView extends StatelessWidget {
           ? _LoginUser()
           : ListView(
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Image.asset(
-                    "assets/shopping.jpeg",
-                    height: 200,
-                  ),
+                Image.asset(
+                  "assets/shopping.jpeg",
+                  height: 200,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
@@ -82,13 +79,10 @@ class _LoginUser extends StatelessWidget {
                       top: 20,
                       bottom: 20,
                     ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.asset(
-                        "assets/shopping.jpeg",
-                        width: 100,
-                        height: 100,
-                      ),
+                    child: Image.asset(
+                      "assets/shopping.jpeg",
+                      width: 100,
+                      height: 100,
                     ),
                   ),
                   //   ),
@@ -152,6 +146,7 @@ class _AdminPanel extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
+            controller.changeOwnBrandOrNot(false, false);//Make Sure Default Brand Options is Export Brand.
             Get.toNamed(uploadItemScreen);
           },
           child: Container(

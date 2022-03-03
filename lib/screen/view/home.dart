@@ -47,11 +47,11 @@ class HomeView extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Hero(
-                                  tag: controller.getItems()[i].photo,
+                                  tag: controller.searchitems[i].photo,
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(20.0),
                                     child: CachedNetworkImage(
-                                      imageUrl: controller.getItems()[i].photo,
+                                      imageUrl: controller.searchitems[i].photo,
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -65,7 +65,7 @@ class HomeView extends StatelessWidget {
                                       padding: const EdgeInsets.only(
                                           top: 5, left: 24, right: 20),
                                       child: Text(
-                                        controller.getItems()[i].name,
+                                        controller.searchitems[i].name,
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
                                         style: TextStyle(
@@ -81,7 +81,7 @@ class HomeView extends StatelessWidget {
                                           left: 30,
                                           right: 20),
                                       child: Text(
-                                        "${controller.getItems()[i].price} Kyats",
+                                        "${controller.searchitems[i].price} Kyats",
                                         style: TextStyle(
                                           fontSize: 14,
                                           fontWeight: FontWeight.bold,
@@ -97,8 +97,6 @@ class HomeView extends StatelessWidget {
                         ),
                       ),
                     ),
-
-                    
                   ],
                 ),
               )

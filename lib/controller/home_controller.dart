@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/state_manager.dart';
@@ -11,7 +12,7 @@ import 'package:kozarni_ecome/data/enum.dart';
 import 'package:kozarni_ecome/model/hive_item.dart';
 import 'package:kozarni_ecome/model/item.dart';
 import 'package:kozarni_ecome/model/purchase.dart';
-import 'package:kozarni_ecome/model/township.dart';
+import 'package:kozarni_ecome/model/division.dart';
 import 'package:kozarni_ecome/model/user.dart';
 import 'package:kozarni_ecome/service/api.dart';
 import 'package:kozarni_ecome/service/auth.dart';
@@ -37,7 +38,7 @@ class HomeController extends GetxController {
   var paymentOptions = PaymentOptions.None.obs; //Payment Option Initial Value
   var checkOutStep = 0.obs; //Check Out Step
   var bankSlipImage = "".obs;
-  Township? township;
+  Map<String, dynamic> townShipNameAndFee = {}; //Township Name and Fee
 
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController verificationController = TextEditingController();
@@ -47,6 +48,39 @@ class HomeController extends GetxController {
 
   final RxList<PurchaseItem> myCart = <PurchaseItem>[].obs;
 
+  bool isOwnBrand = false;
+  int mouseIndex = -1; //Mouse Region
+
+  void changeMouseIndex(int i) {
+    // Change Mouse Region
+    mouseIndex = i;
+    debugPrint("On Mouse Exist************");
+    update();
+  }
+
+  //BlueToothPrint Instance
+  //BluetoothPrint blueToothPrint = BluetoothPrint.instance;
+  //BlueToothDevice
+  //BluetoothDevice? blueToothDevice;
+
+  //Set Device and Connect
+  /* void setDeviceAndConnect(BluetoothDevice device) {
+    blueToothDevice = device;
+    if (!(blueToothDevice == null)) {
+      //We connect
+      blueToothPrint.connect(blueToothDevice!);
+    }
+    update();
+  }*/
+
+  //Chage OwnBand
+  void changeOwnBrandOrNot(bool value, bool isUpdate) {
+    isOwnBrand = value;
+    if (isUpdate) {
+      update();
+    }
+  }
+
   //Set Shipping Fee
   void setTownshipName(String? val) {
     townshipName = val!;
@@ -54,8 +88,11 @@ class HomeController extends GetxController {
   }
 
   //Set Township Name
-  void setTownship(Township value) {
-    township = value;
+  void setTownShipNameAndShip({required String name, required String fee}) {
+    townShipNameAndFee = {
+      "townName": name,
+      "fee": int.parse(fee),
+    };
     update();
   }
 
@@ -74,51 +111,74 @@ class HomeController extends GetxController {
     bankSlipImage.value = image;
   }
 
-  void addToCart(ItemModel itemModel, String color, String size, int price) {
+  void addToCart(ItemModel itemModel, String color, String size, int price,
+      String priceType) {
     try {
       final PurchaseItem _item = myCart.firstWhere(
         (item) =>
             item.id == itemModel.id &&
             item.color == color &&
             item.size == size &&
-            item.price == price,
+            item.price == price &&
+            item.priceType == priceType,
       );
       myCart.value = myCart.map((element) {
         if (_item.id == element.id) {
           return PurchaseItem(
             element.id,
+            element.itemName,
             element.count + 1,
             element.size,
             element.color,
+            element.priceType,
+            element.isOwnBrand,
             element.price,
           );
         }
         return element;
       }).toList();
     } catch (e) {
-      myCart.add(PurchaseItem(itemModel.id!, 1, size, color, price));
+      myCart.add(PurchaseItem(
+        itemModel.id!,
+        itemModel.name,
+        1,
+        size,
+        color,
+        priceType,
+        itemModel.isOwnBrand,
+        price,
+      ));
     }
   }
 
   final RxList<ItemModel> items = <ItemModel>[].obs;
-
+  final RxList<ItemModel> brandItems = <ItemModel>[].obs; //Brand Item
+  final RxList<ItemModel> exportAndBrandItems = <ItemModel>[].obs;
   final RxList<ItemModel> searchitems = <ItemModel>[].obs;
 
+  //set export and brand items when edit page start
+  void setExportAndBrandItems() {
+    exportAndBrandItems
+      ..addAll(items)
+      ..addAll(brandItems);
+  }
+
   final Rx<ItemModel> selectedItem = ItemModel(
-          photo: '',
-          photo2: '',
-          photo3: '',
-          deliverytime: '',
-          brand: '',
-          discountprice: 0,
-          name: '',
-          price: 0,
-          color: '',
-          desc: '',
-          size: '',
-          star: 0,
-          category: '')
-      .obs;
+    photo: '',
+    photo2: '',
+    photo3: '',
+    deliverytime: '',
+    brand: '',
+    discountprice: 0,
+    name: '',
+    price: 0,
+    color: '',
+    desc: '',
+    size: '',
+    star: 0,
+    category: '',
+    isOwnBrand: false,
+  ).obs;
 
   void setSelectedItem(ItemModel item) {
     selectedItem.value = item;
@@ -138,6 +198,7 @@ class HomeController extends GetxController {
     size: '',
     star: 0,
     category: '',
+    isOwnBrand: false,
   ).obs;
 
   void setEditItem(ItemModel itemModel) {
@@ -149,25 +210,56 @@ class HomeController extends GetxController {
       return items.firstWhere((e) => e.id == id);
     } catch (e) {
       return ItemModel(
-          photo: '',
-          photo2: '',
-          photo3: '',
-          deliverytime: '',
-          brand: '',
-          discountprice: 0,
-          name: '',
-          price: 0,
-          color: '',
-          desc: '',
-          size: '',
-          star: 0,
-          category: '');
+        photo: '',
+        photo2: '',
+        photo3: '',
+        deliverytime: '',
+        brand: '',
+        discountprice: 0,
+        name: '',
+        price: 0,
+        color: '',
+        desc: '',
+        size: '',
+        star: 0,
+        category: '',
+        isOwnBrand: false,
+      );
+    }
+  }
+
+  //Get Brand Item
+  ItemModel getBrandItem(String id) {
+    try {
+      return brandItems.firstWhere((e) => e.id == id);
+    } catch (e) {
+      return ItemModel(
+        photo: '',
+        photo2: '',
+        photo3: '',
+        deliverytime: '',
+        brand: '',
+        discountprice: 0,
+        name: '',
+        price: 0,
+        color: '',
+        desc: '',
+        size: '',
+        star: 0,
+        category: '',
+        isOwnBrand: false,
+      );
     }
   }
 
   List<ItemModel> getItems() => category.value == 'All'
       ? items
       : items.where((e) => e.category == category.value).toList();
+
+  //GetBrandItems
+  List<ItemModel> getBrandItems() => brandCategory.value == 'All'
+      ? brandItems
+      : brandItems.where((e) => e.category == brandCategory.value).toList();
 
   List<String> categoryList() {
     final List<String> _data = [
@@ -181,6 +273,24 @@ class HomeController extends GetxController {
     }
 
     if (items.isEmpty) {
+      _data.clear();
+    }
+    return _data;
+  }
+
+  //Brand Category List
+  List<String> brandCategoryList() {
+    final List<String> _data = [
+      'All',
+    ];
+
+    for (var i = 0; i < brandItems.length; i++) {
+      if (!_data.contains(brandItems[i].category)) {
+        _data.add(brandItems[i].category);
+      }
+    }
+
+    if (brandItems.isEmpty) {
       _data.clear();
     }
     return _data;
@@ -203,9 +313,12 @@ class HomeController extends GetxController {
           element.size == p.size) {
         return PurchaseItem(
           element.id,
+          element.itemName,
           element.count + 1,
           element.size,
           element.color,
+          element.priceType,
+          element.isOwnBrand,
           element.price,
         );
       }
@@ -222,8 +335,15 @@ class HomeController extends GetxController {
           element.color == p.color &&
           element.size == p.size) {
         if (element.count > 1) {
-          return PurchaseItem(element.id, element.count - 1, element.size,
-              element.color, element.price);
+          return PurchaseItem(
+              element.id,
+              element.itemName,
+              element.count - 1,
+              element.size,
+              element.color,
+              element.priceType,
+              element.isOwnBrand,
+              element.price);
         }
         needToRemove = true;
         return element;
@@ -276,6 +396,7 @@ class HomeController extends GetxController {
       size: model.size,
       star: model.star,
       category: model.category,
+      isOwnBrand: model.isOwnBrand,
     );
   }
 
@@ -296,9 +417,9 @@ class HomeController extends GetxController {
       size: model.size,
       star: model.star,
       category: model.category,
+      isOwnBrand: model.isOwnBrand,
     );
   }
-
 
   final RxList<PurchaseModel> _purchcases = <PurchaseModel>[].obs; ////
 
@@ -321,14 +442,17 @@ class HomeController extends GetxController {
       final _purchase = PurchaseModel(
         items: myCart
             .map((cart) =>
-                "${cart.id},${cart.color},${cart.size},${cart.count},${cart.price}")
+                "${cart.id},${cart.itemName},${cart.color},${cart.size},${cart.count},${cart.price}")
             .toList(),
         name: list[0],
         email: list[1],
         phone: int.parse(list[2]),
         address: list[3],
         bankSlipImage: bankSlipImage.value.isEmpty ? null : bankSlipImage.value,
-        township: township!,
+        deliveryTownshipInfo: [
+          townShipNameAndFee["townName"],
+          townShipNameAndFee["fee"]
+        ],
       );
       await _database.writePurchaseData(_purchase).then((value) {
         Get.snackbar("လူကြီးမင်း Order တင်ခြင်း", 'အောင်မြင်ပါသည်');
@@ -469,7 +593,16 @@ class HomeController extends GetxController {
     _database.watch(itemCollection).listen((event) {
       items.value =
           event.docs.map((e) => ItemModel.fromJson(e.data(), e.id)).toList();
+      exportAndBrandItems.addAll(items);
     });
+    //For Branch Collection
+    _database.watch(brandCollection).listen((event) {
+      brandItems.value =
+          event.docs.map((e) => ItemModel.fromJson(e.data(), e.id)).toList();
+      exportAndBrandItems.addAll(brandItems);
+    });
+
+    ///
     _auth.onAuthChange().listen((_) async {
       user.value = AuthUser(user: _);
       if (_ == null) {
@@ -507,6 +640,20 @@ class HomeController extends GetxController {
         }
       }
     });
+
+    //Listen BlueTooth State
+    /*blueToothPrint.state.listen((event) {
+      switch (event) {
+        case BluetoothPrint.CONNECTED:
+          Get.showSnackbar(GetBar(message: "Connected"));
+          break;
+        case BluetoothPrint.DISCONNECTED:
+          Get.showSnackbar(GetBar(message: "Disconnected"));
+          break;
+        default:
+          break;
+      }
+    });*/
   }
 
   final RxInt navIndex = 0.obs;
@@ -516,9 +663,15 @@ class HomeController extends GetxController {
   }
 
   final RxString category = 'All'.obs;
+  final RxString brandCategory = 'All'.obs; //BrandCategory
 
   void changeCat(String name) {
     category.value = name;
+  }
+
+  //Change Brand Cat
+  void changeBrandCat(String name) {
+    brandCategory.value = name;
   }
 
   final RxBool isSearch = false.obs;
@@ -527,7 +680,7 @@ class HomeController extends GetxController {
 
   void onSearch(String name) {
     isSearch.value = true;
-    searchitems.value = items
+    searchitems.value = exportAndBrandItems
         .where((p0) => p0.name.toLowerCase().contains(name.toLowerCase()))
         .toList();
   }

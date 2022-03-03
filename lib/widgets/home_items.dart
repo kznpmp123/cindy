@@ -1,12 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/route_manager.dart';
-import 'package:hive/hive.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:kozarni_ecome/controller/home_controller.dart';
-import 'package:kozarni_ecome/data/constant.dart';
-import 'package:kozarni_ecome/model/hive_item.dart';
 import 'package:kozarni_ecome/routes/routes.dart';
 import 'package:get/get.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -45,47 +40,12 @@ class HomeItems extends StatelessWidget {
                     children: [
                       Hero(
                         tag: controller.getItems()[i].photo,
-                        child: Stack(
-                          children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(20.0),
-                            child: CachedNetworkImage(
-                              imageUrl: controller.getItems()[i].photo,
-                              fit: BoxFit.cover,
-                            ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20.0),
+                          child: CachedNetworkImage(
+                            imageUrl: controller.getItems()[i].photo,
+                            fit: BoxFit.cover,
                           ),
-                            // ValueListenableBuilder(
-                            //   valueListenable:
-                            //   Hive.box<HiveItem>(boxName).listenable(),
-                            //   builder: (context, Box<HiveItem> box, widget) {
-                            //     final currentObj =
-                            //     box.get(controller.selectedItem.value.id);
-                            //
-                            //     if (!(currentObj == null)) {
-                            //       return IconButton(
-                            //           onPressed: () {
-                            //             box.delete(currentObj.id);
-                            //           },
-                            //           icon: Icon(
-                            //             FontAwesomeIcons.solidHeart,
-                            //             color: Colors.red,
-                            //             size: 20,
-                            //           ));
-                            //     }
-                            //     return IconButton(
-                            //         onPressed: () {
-                            //           box.put(
-                            //               controller.selectedItem.value.id,
-                            //               controller.changeHiveItem(controller.selectedItem.value));
-                            //         },
-                            //         icon: Icon(
-                            //           Icons.favorite_outline,
-                            //           color: Colors.red,
-                            //           size: 20,
-                            //         ));
-                            //   },
-                            // ),
-                         ],
                         ),
                       ),
                       SizedBox(
@@ -106,7 +66,6 @@ class HomeItems extends StatelessWidget {
                               ),
                             ),
                           ),
-
                           Padding(
                             padding: const EdgeInsets.only(
                                 top: 5, bottom: 5, left: 30, right: 20),

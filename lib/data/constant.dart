@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 const Color scaffoldBackground = Colors.white;
 const Color appBarColor = Colors.white;
 const Color appBarTitleColor = Color.fromRGBO(19, 19, 19, 1);
-const Color homeIndicatorColor = Colors.orange;
+const Color homeIndicatorColor = Color.fromRGBO(247, 98, 16, 1);
 const Color detailBackgroundColor = Colors.white;
 const Color detailTextBackgroundColor = Colors.white;
 ButtonStyle buttonStyle = ButtonStyle(
@@ -18,8 +18,9 @@ const String userCollection = 'users';
 const String profileCollection = 'profiles';
 const String itemCollection = 'items';
 const String purchaseCollection = 'purchases';
+const String brandCollection = 'brandProducts';
 const List<String> priceList = [
-  'တစ်ထည်ဈေး (Ratail)',
-  'နှစ်ထည်ဈေး (Wholesale)',
+  '၁ ထည် လက်လီ ဈေးနှုန်း',
+  'လက်ကား ဈေးနှုန်း',
 ];
-const String boxName = "favouriteBOX";
+const String boxName = "favouritesBOX";

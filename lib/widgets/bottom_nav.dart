@@ -33,78 +33,107 @@ class BottomNav extends StatelessWidget {
         () => Row(
           children: [
             Expanded(
-              child: IconButton(
-                onPressed: () {
-                  controller.changeNav(0);
-                },
-                icon: FaIcon(
-                  FontAwesomeIcons.home,
-                  color: controller.navIndex.value == 0
-                      ? homeIndicatorColor
-                      : null,
-                ),
-              ),
-            ),
-            Expanded(
-              child: IconButton(
-                onPressed: () {
-                  controller.changeNav(1);
-                },
-                icon: Image.asset(
-                  "assets/hotsale.png",
-                  color: controller.navIndex.value == 1 ? null : Colors.black,
-                ),
-              ),
-            ),
-            Expanded(
-              child: IconButton(
-                onPressed: () {
-                  controller.changeNav(2);
-                },
-                icon: Stack(
-                  children: [
-                    FaIcon(
-                      FontAwesomeIcons.shoppingCart,
-                      color: controller.navIndex.value == 2
+              child: Column(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      controller.changeNav(0);
+                    },
+                    icon: FaIcon(
+                      FontAwesomeIcons.truck,
+                      color: controller.navIndex.value == 0
                           ? homeIndicatorColor
                           : null,
                     ),
-                    CircleAvatar(
-                        backgroundColor: Colors.orange,
-                        minRadius: 0,
-                        maxRadius: 30,
-                        child: Text(
-                          controller.myCart.length.toString(),
-                          style: TextStyle(color: Colors.black, fontSize: 14),
-                        )),
-                  ],
-                ),
+                  ),
+                  Text("Export"),
+                ],
               ),
             ),
             Expanded(
-              child: IconButton(
-                onPressed: () {
-                  controller.changeNav(3);
-                },
-                icon: FaIcon(
-                  FontAwesomeIcons.solidHeart,
-                  color: controller.navIndex.value == 3
-                  ? homeIndicatorColor
-                  : null,
-                ),
+              child: Column(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      controller.changeNav(1);
+                    },
+                    icon: FaIcon(
+                      FontAwesomeIcons.shirtsinbulk,
+                      color: controller.navIndex.value == 1
+                          ? homeIndicatorColor
+                          : null,
+                    ),
+                  ),
+                  Text("Brand"),
+                ],
+              ),
+            ),
+
+            Expanded(
+              child: Column(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      controller.changeNav(2);
+                    },
+                    icon: Stack(
+                      children: [
+                        FaIcon(
+                          FontAwesomeIcons.shoppingCart,
+                          color: controller.navIndex.value == 2
+                              ? homeIndicatorColor
+                              : null,
+                        ),
+                        CircleAvatar(
+                            backgroundColor: Colors.orange,
+                            minRadius: 0,
+                            maxRadius: 10,
+                            child: Text(
+                              controller.myCart.length.toString(),
+                              style: TextStyle(color: Colors.white, fontSize: 14),
+                            )),
+                      ],
+                    ),
+                  ),
+                  Text("Cart"),
+                ],
               ),
             ),
             Expanded(
-              child: IconButton(
-                onPressed: () {
-                  controller.changeNav(4);
-                },
-                icon: FaIcon(
-                  FontAwesomeIcons.solidUser,
-                  color: controller.navIndex.value == 4
-                      ? homeIndicatorColor
-                      : null,
-                ),
+              child: Column(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      controller.changeNav(3);
+                    },
+                  icon: Icon(
+                      FontAwesomeIcons.solidHeart,
+                      color: controller.navIndex.value == 3
+                          ? homeIndicatorColor
+                          : null,
+                    ),
+                  ),
+                  Text("Favourite"),
+                ],
+              ),
+
+            ),
+            Expanded(
+              child: Column(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      controller.changeNav(4);
+                    },
+                    icon: FaIcon(
+                      FontAwesomeIcons.solidUserCircle,
+                      color: controller.navIndex.value == 4
+                          ? homeIndicatorColor
+                          : null,
+                    ),
+                  ),
+                  Text("Account"),
+                ],
               ),
             ),
           ],

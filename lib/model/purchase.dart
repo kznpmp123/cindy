@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:kozarni_ecome/model/township.dart';
+import 'package:kozarni_ecome/model/division.dart';
 
 class PurchaseModel {
   final String? id;
@@ -9,7 +9,7 @@ class PurchaseModel {
   final int phone;
   final String address;
   final String? bankSlipImage;
-  final Township township;
+  final List deliveryTownshipInfo;
   final DateTime? dateTime;
 
   PurchaseModel({
@@ -19,7 +19,7 @@ class PurchaseModel {
     required this.email,
     required this.phone,
     required this.address,
-    required this.township,
+    required this.deliveryTownshipInfo,
     required this.bankSlipImage,
     this.dateTime,
   });
@@ -33,7 +33,7 @@ class PurchaseModel {
     int? phone,
     String? address,
     String? bankSlipImage,
-    Township? township,
+    List? deliveryTownshipInfo,
     DateTime? dateTime,
   }) =>
       PurchaseModel(
@@ -42,7 +42,7 @@ class PurchaseModel {
         email: email ?? this.email,
         phone: phone ?? this.phone,
         address: address ?? this.address,
-        township: township ?? this.township,
+        deliveryTownshipInfo: deliveryTownshipInfo ?? this.deliveryTownshipInfo,
         bankSlipImage: bankSlipImage ?? this.bankSlipImage,
       );
 
@@ -55,13 +55,13 @@ class PurchaseModel {
         phone: json['phone'] as int,
         address: json['address'] as String,
         bankSlipImage: json['bankSlipImage'] as String?,
-        township: Township.fromJson(json['township']),
+        deliveryTownshipInfo: json['deliveryTownshipInfo'] as List,
         dateTime: (json['dateTime'] as Timestamp).toDate(),
       );
 
   @override
   String toString() {
-    return "$id,$items,$name,$email,$phone,$address,$bankSlipImage,$dateTime";
+    return "$id,$items,$name,$email,$phone,$address,$bankSlipImage,$deliveryTownshipInfo,$dateTime";
   }
 
   Map<String, dynamic> toJson() => {
@@ -71,7 +71,7 @@ class PurchaseModel {
         'phone': phone,
         'address': address,
         'bankSlipImage': bankSlipImage,
-        'township': township.toJson(),
+        'deliveryTownshipInfo': deliveryTownshipInfo,
         'dateTime': dateTime ?? DateTime.now(),
       };
 }

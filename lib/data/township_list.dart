@@ -1,14 +1,92 @@
-import 'package:kozarni_ecome/model/township.dart';
+import 'package:kozarni_ecome/model/division.dart';
 
-final List<Township> townshipList = [
-  Township(name: "Botataung", fee: 3000),
-  Township(name: "Kyimyindaing", fee: 2000),
-  Township(name: "Dagon Seikkan", fee: 1600),
-  Township(name: "Kamayut", fee: 1500),
-  Township(name: "Lanmadaw", fee: 2700),
-  Township(name: "Sanchaung", fee: 3300),
-  Township(name: "Dala", fee: 1700),
-  Township(name: "Insein", fee: 2600),
-  Township(name: "Shwepyitha", fee: 2800),
-  Township(name: "Seikkyi Kanaungto", fee: 1400),
+final List<Division> divisionList = [
+  //Yangon Division
+  Division(
+    name: "ရန်ကုန်တိုင်း",
+    townShipMap: {
+      '1400': [
+        "ကျောက်တံတား",
+        "လမ်းမတော်",
+        "လသာ"
+            "ပန်းဘဲတန်း",
+        "ဗိုလ်တထောင်",
+        "မင်္ဂလာတောင်ညွန့်",
+        "ပုဇွန်တောင်",
+      ],
+      '1900': [
+        "အလုံ",
+        "ဗဟန်း",
+        "ဒဂုံ",
+        "လှိုင်",
+        "ကမာရွတ်",
+        "ကြည့်မြင်တိုင်",
+        "မရမ်းကုန်း",
+        "စမ်းချောင်း",
+      ],
+      '2500': [
+        "လှည်းကူး",
+        "မှော်ဘီ/တိုက်ကြီး",
+        "ထန်းတပင်",
+        "ဒလ/ကော့မူး",
+        "ကွမ်းခြံကုန်း",
+      ]
+    },
+  ),
+  //Mandalay Division
+  Division(
+    name: "မန္တလေးတိုင်း",
+    townShipMap: {
+      "3500": [
+        "တောင်သာ",
+      ],
+      "2500": [
+        "အမရပူရ",
+        "အောင်မြေသာဇံ",
+        "ချမ်းအေးသာဇံ",
+        "မဟာအောင်မြေ",
+        "ပုသိမ်ကြီး",
+        "ပြည်ကြီးတံခွန်",
+      ]
+    },
+  ),
+  //Ayarwadi Division
+  Division(
+    name: "ဧရာဝတီတိုင်း",
+    townShipMap: {
+      "2900": [
+        "မြောင်းမြ/ပုသိမ်",
+        "ကန်ကြီးထောင့်",
+      ]
+    },
+  ),
+  //ပဲခူးတိုင်း
+  Division(
+    name: "ပဲခူးတိုင်း", 
+    townShipMap: {
+      "2900": [
+        "ပဲခူး/တောင်ငူ",
+        "ပေါင်းတည်",
+        "ပြည်/ရွှေတောင်",
+        "ကြို့ပင်ကောက်",
+      ]
+    },
+    ),
+  //နေပြည်တော်
+  Division(
+    name: "နေပြည်တော်", 
+    townShipMap: {
+      "2500":[
+        "ဥတ္တရသီရိ",
+        "ဒက္ခိဏသီရိ",
+        "ပုပ္ပသီရိ",
+        "ဇေယာသီရိ",
+        "ပျဉ်းမနား",
+      ],
+    "2900": [
+      "လယ်ဝေး",
+      "တပ်ကုန်း",
+    ]  
+    },
+  ),  
 ];

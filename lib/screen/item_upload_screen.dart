@@ -34,6 +34,7 @@ class _UploadItemState extends State<UploadItem> {
         size: '',
         star: 0,
         category: '',
+        isOwnBrand: false,
       ),
     );
     super.dispose();
@@ -44,7 +45,10 @@ class _UploadItemState extends State<UploadItem> {
     return Scaffold(
       backgroundColor: scaffoldBackground,
       appBar: AppBar(
-        title: Text("𝐂𝐢𝐧𝐝𝐲 Branded Export Fashion", style: TextStyle(color: Colors.black, fontSize: 14),),
+        title: Text(
+          "𝐂𝐢𝐧𝐝𝐲 Branded Export Fashion",
+          style: TextStyle(color: Colors.black, fontSize: 14),
+        ),
         elevation: 5,
         backgroundColor: detailBackgroundColor,
         leading: IconButton(
@@ -59,39 +63,41 @@ class _UploadItemState extends State<UploadItem> {
         key: controller.form,
         child: ListView(
           children: [
-            // GestureDetector(
-            //   onTap: controller.pickImage,
-            //   child: Container(
-            //     width: double.infinity,
-            //     height: 200,
-            //     margin: EdgeInsets.only(
-            //       left: 20,
-            //       right: 20,
-            //       top: 20,
-            //     ),
-            //     child: Card(
-            //       child: Obx(
-            //         () => controller.filePath.isEmpty
-            //             ? Center(
-            //                 child: Icon(
-            //                   Icons.image,
-            //                 ),
-            //               )
-            //             : ClipRRect(
-            //                 borderRadius: BorderRadius.all(
-            //                   Radius.circular(7),
-            //                 ),
-            //                 child: Image.file(
-            //                   File(
-            //                     controller.filePath.value,
-            //                   ),
-            //                   fit: BoxFit.cover,
-            //                 ),
-            //               ),
-            //       ),
-            //     ),
-            //   ),
-            // ),
+            //Option OwnBrand Or Not
+            SizedBox(
+              height: 50,
+              child: GetBuilder<HomeController>(builder: (con) {
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    //Export Brand
+                    ChoiceChip(
+                      selectedColor: Colors.black,
+                      label: Text(
+                        "Export Brand",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      selected: con.isOwnBrand == false,
+                      onSelected: (selected) =>
+                          con.changeOwnBrandOrNot(false, true),
+                    ),
+                    //Space
+                    const SizedBox(width: 10),
+                    //Own Brand
+                    ChoiceChip(
+                      selectedColor: Colors.black,
+                      label: Text(
+                        "Own Brand",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      selected: con.isOwnBrand == true,
+                      onSelected: (selected) =>
+                          con.changeOwnBrandOrNot(true, true),
+                    ),
+                  ],
+                );
+              }),
+            ),
             Padding(
               padding: EdgeInsets.only(
                 top: 20,
@@ -156,21 +162,6 @@ class _UploadItemState extends State<UploadItem> {
               ),
             ),
 
-            Padding(
-              padding: EdgeInsets.only(
-                top: 20,
-                left: 20,
-                right: 20,
-              ),
-              child: TextFormField(
-                controller: controller.brandController,
-                validator: controller.validator,
-                decoration: InputDecoration(
-                  hintText: 'Brand အမည်',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-            ),
 
 
             Padding(
@@ -202,16 +193,15 @@ class _UploadItemState extends State<UploadItem> {
                 right: 20,
               ),
               child: TextFormField(
-                controller: controller.discountpriceController,
+                controller: controller.priceController,
                 validator: controller.validator,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
-                  hintText: 'တစ်ထည်ဈေး (Ratail)',
+                  hintText: 'လက်လီ ( ၁ ) ထည်ဈေးနှုန်း',
                   border: OutlineInputBorder(),
                 ),
               ),
             ),
-
 
             Padding(
               padding: EdgeInsets.only(
@@ -220,11 +210,10 @@ class _UploadItemState extends State<UploadItem> {
                 right: 20,
               ),
               child: TextFormField(
-                controller: controller.priceController,
+                controller: controller.brandController,
                 validator: controller.validator,
-                keyboardType: TextInputType.number,
                 decoration: InputDecoration(
-                  hintText: 'နှစ်ထည်ဈေး (Wholesale)',
+                  hintText: '......ထည် ဈေးနှုန်း (Wholesale) ရေးပေးပါ',
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -240,7 +229,24 @@ class _UploadItemState extends State<UploadItem> {
                 controller: controller.deliverytimeController,
                 validator: controller.validator,
                 decoration: InputDecoration(
-                  hintText: 'Delivery Time',
+                  hintText: 'လက်ကား ပုံမှန် ဈေးနှုန်း',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+            ),
+
+            Padding(
+              padding: EdgeInsets.only(
+                top: 20,
+                left: 20,
+                right: 20,
+              ),
+              child: TextFormField(
+                controller: controller.discountpriceController,
+                validator: controller.validator,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  hintText: 'လက်ကားအတွက် လျှော့ထားသော ဈေးနှုန်း',
                   border: OutlineInputBorder(),
                 ),
               ),

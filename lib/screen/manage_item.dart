@@ -29,9 +29,10 @@ class _ManageItemState extends State<ManageItem> {
     return Scaffold(
       backgroundColor: scaffoldBackground,
       appBar: AppBar(
-        title: Text("𝐂𝐢𝐧𝐝𝐲 Branded Export Fashion",
-          style: TextStyle(color: Colors.black,
-              fontSize: 14),),
+        title: Text(
+          "𝐂𝐢𝐧𝐝𝐲 Branded Export Fashion",
+          style: TextStyle(color: Colors.black, fontSize: 14),
+        ),
         elevation: 5,
         backgroundColor: detailBackgroundColor,
         leading: IconButton(
@@ -67,11 +68,11 @@ class _ManageItemState extends State<ManageItem> {
               () => ListView.builder(
                 itemCount: homeController.isSearch.value
                     ? homeController.searchitems.length
-                    : homeController.items.length,
+                    : homeController.exportAndBrandItems.length,
                 itemBuilder: (_, i) => SwipeActionCell(
                   key: ValueKey(homeController.isSearch.value
                       ? homeController.searchitems.length
-                      : homeController.items[i].id),
+                      : homeController.exportAndBrandItems[i].id),
                   trailingActions: [
                     SwipeAction(
                       onTap: (CompletionHandler _) async {
@@ -79,7 +80,7 @@ class _ManageItemState extends State<ManageItem> {
                         await mangeController.delete(
                             homeController.isSearch.value
                                 ? homeController.searchitems[i].id!
-                                : homeController.items[i].id!);
+                                : homeController.exportAndBrandItems[i].id!);
                         setState(() {});
                       },
                       title: 'Delete',
@@ -88,9 +89,12 @@ class _ManageItemState extends State<ManageItem> {
                       color: Colors.grey,
                       onTap: (CompletionHandler _) async {
                         await _(false);
-                        homeController.setEditItem(homeController.isSearch.value
+                        final itemModel = homeController.isSearch.value
                             ? homeController.searchitems[i]
-                            : homeController.items[i]);
+                            : homeController.exportAndBrandItems[i];
+                        homeController.setEditItem(itemModel);
+                        homeController.changeOwnBrandOrNot(itemModel.isOwnBrand,
+                            false); //Make Sure to change Brand Options Depend On This Product.
                         Get.toNamed(uploadItemScreen);
                         setState(() {});
                       },
@@ -107,7 +111,7 @@ class _ManageItemState extends State<ManageItem> {
                           CachedNetworkImage(
                             imageUrl: homeController.isSearch.value
                                 ? homeController.searchitems[i].photo
-                                : homeController.items[i].photo,
+                                : homeController.exportAndBrandItems[i].photo,
                             width: 100,
                             height: 125,
                             fit: BoxFit.cover,
@@ -123,7 +127,8 @@ class _ManageItemState extends State<ManageItem> {
                                 Text(
                                   homeController.isSearch.value
                                       ? homeController.searchitems[i].name
-                                      : homeController.items[i].name,
+                                      : homeController
+                                          .exportAndBrandItems[i].name,
                                   style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w600,
@@ -135,7 +140,8 @@ class _ManageItemState extends State<ManageItem> {
                                 Text(
                                   homeController.isSearch.value
                                       ? homeController.searchitems[i].color
-                                      : homeController.items[i].color
+                                      : homeController
+                                          .exportAndBrandItems[i].color
                                           .replaceAll(',', ', '),
                                   style: TextStyle(
                                     fontSize: 12,
@@ -149,7 +155,8 @@ class _ManageItemState extends State<ManageItem> {
                                 Text(
                                   homeController.isSearch.value
                                       ? homeController.searchitems[i].size
-                                      : homeController.items[i].size
+                                      : homeController
+                                          .exportAndBrandItems[i].size
                                           .replaceAll(',', ', '),
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -157,14 +164,13 @@ class _ManageItemState extends State<ManageItem> {
                                     fontSize: 12,
                                     fontWeight: FontWeight.w400,
                                     wordSpacing: 1,
-
                                   ),
                                 ),
                                 SizedBox(
                                   height: 5,
                                 ),
                                 Text(
-                                  "${homeController.isSearch.value ? homeController.searchitems[i].price : homeController.items[i].price}Ks",
+                                  "${homeController.isSearch.value ? homeController.searchitems[i].price : homeController.exportAndBrandItems[i].price}Ks",
                                   style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w400,

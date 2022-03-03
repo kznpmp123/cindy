@@ -31,13 +31,14 @@ class HiveItemAdapter extends TypeAdapter<HiveItem> {
       size: fields[11] as String,
       star: fields[12] as int,
       category: fields[13] as String,
+      isOwnBrand: fields[14] as bool,
     );
   }
 
   @override
   void write(BinaryWriter writer, HiveItem obj) {
     writer
-      ..writeByte(14)
+      ..writeByte(15)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -65,7 +66,9 @@ class HiveItemAdapter extends TypeAdapter<HiveItem> {
       ..writeByte(12)
       ..write(obj.star)
       ..writeByte(13)
-      ..write(obj.category);
+      ..write(obj.category)
+      ..writeByte(14)
+      ..write(obj.isOwnBrand);
   }
 
   @override

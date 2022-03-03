@@ -8,3 +8,8 @@ enum Price{
   Retail,
   WholeSale,
 }
+
+enum Brand{
+  Export,
+  Own,
+}

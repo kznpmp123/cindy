@@ -13,6 +13,7 @@ class ItemModel {
   final String size;
   final int star;
   final String category;
+  final bool isOwnBrand;
   // final DateTime? created;
 
   ItemModel({
@@ -30,6 +31,7 @@ class ItemModel {
     required this.size,
     required this.star,
     required this.category,
+    required this.isOwnBrand,
     // this.created,
   });
 
@@ -48,6 +50,7 @@ class ItemModel {
         size: json['size'] as String,
         star: json['star'] as int,
         category: json['category'] as String,
+        isOwnBrand: json['isOwnBrand'] as bool,
       );
 
   Map<String, dynamic> toJson() => {
@@ -64,6 +67,7 @@ class ItemModel {
         'star': star,
         'category': category,
         'desc': desc,
+        'isOwnBrand': isOwnBrand,
       };
 
   ItemModel copyWith({
@@ -80,6 +84,7 @@ class ItemModel {
     String? newSize,
     int? newStar,
     String? newCategory,
+    bool? newIsOwnBrand,
   }) =>
       ItemModel(
         id: id,
@@ -96,15 +101,20 @@ class ItemModel {
         size: newSize ?? size,
         star: newStar ?? star,
         category: newCategory ?? category,
+        isOwnBrand: newIsOwnBrand ?? isOwnBrand,
       );
 }
 
 class PurchaseItem {
   final String id;
+  final String itemName;
   final int count;
   final String size;
   final String color;
+  final bool isOwnBrand;
+  final String priceType;
   final int price;
 
-  PurchaseItem(this.id, this.count, this.size, this.color, this.price);
+  PurchaseItem(this.id, this.itemName, this.count, this.size, this.color,
+      this.priceType, this.isOwnBrand, this.price);
 }

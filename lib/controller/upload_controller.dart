@@ -87,7 +87,7 @@ class UploadController extends GetxController {
 
         if (_homeController.editItem.value.id != null) {
           await _database.update(
-            itemCollection,
+             _homeController.isOwnBrand ? brandCollection : itemCollection,
             path: _homeController.editItem.value.id!,
             data: _homeController.editItem.value
                 .copyWith(
@@ -104,12 +104,13 @@ class UploadController extends GetxController {
                   newStar: int.parse(starController.text),
                   des: desc.text,
                   newCategory: categoryController.text,
+                  newIsOwnBrand: _homeController.isOwnBrand,
                 )
                 .toJson(),
           );
         } else {
           await _database.write(
-            itemCollection,
+           _homeController.isOwnBrand ? brandCollection : itemCollection,
             data: ItemModel(
               photo: photoController.text,
               photo2: photo2Controller.text,
@@ -125,6 +126,7 @@ class UploadController extends GetxController {
               size: sizeController.text,
               star: int.parse(starController.text),
               category: categoryController.text,
+              isOwnBrand: _homeController.isOwnBrand,
             ).toJson(),
           );
         }

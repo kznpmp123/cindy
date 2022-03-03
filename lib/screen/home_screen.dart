@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:kozarni_ecome/controller/home_controller.dart';
 import 'package:kozarni_ecome/data/constant.dart';
+import 'package:kozarni_ecome/screen/view/brand.dart';
 import 'package:kozarni_ecome/screen/view/cart.dart';
 import 'package:kozarni_ecome/screen/view/favourite.dart';
 import 'package:kozarni_ecome/screen/view/hot.dart';
@@ -16,7 +17,8 @@ import 'view/profile.dart';
 
 List<Widget> _template = [
   HomeView(),
-  HotView(),
+  BrandView(),
+  //HotView(),
   CartView(),
   FavouriteView(),
   ProfileView(),
@@ -41,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
     initMessaging();
   }
 
-  Future<void> notitficationPermission() async {
+  void notitficationPermission() async {
     await messaging.requestPermission(
       alert: true,
       announcement: false,
@@ -103,9 +105,9 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: appBarColor,
         elevation: 0,
         title: Text(
-          "𝐂𝐢𝐧𝐝𝐲 Branded Export Fashion",
+          "𝐂𝐢𝐧𝐝𝐲 Export & Clothing Brand Fashion",
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 14,
             fontWeight: FontWeight.bold,
             color: appBarTitleColor,
           ),

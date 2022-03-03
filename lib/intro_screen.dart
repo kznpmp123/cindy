@@ -8,16 +8,28 @@ class OnBoardingPage extends StatelessWidget {
     child: IntroductionScreen(
       pages: [
         PageViewModel(
-          title: "",
-          body: ''' 🌺   𝐂𝐢𝐧𝐝𝐲 Branded Export Fashion   🌺 ''',
+          title: "CINDY BRANDED FASHION SHOP",
+          body: ''' EXPORT QUALITY
+          
+MADE IN MYANMAR
+
+FAIR PRICE
+
+EXPORT CLOTHING
+
+EXPORT FASHION
+
+CINDY EXPORT FASHION
+
+CINDY BRANDED EXPORT FASHION''',
           image: buildImage('assets/shopping.jpeg'),
           decoration: getPageDecoration(),
         ),
 
         PageViewModel(
-          title: "🌺   𝐂𝐢𝐧𝐝𝐲 Branded Export Fashion   🌺",
+          title: "CINDY BRANDED FASHION SHOP",
           body: ''' 
-          🌺 𝐂𝐢𝐧𝐝𝐲 ဆိုတာ 🌺 
+          𝐂𝐢𝐧𝐝𝐲 ဆိုတာ 
           🌿 ️တစ်နေကုန် အေးမြမယ်...
           🌿 ️ပေါ့ပါးမယ်..
           🌿 ️သက်သောင့်သက်သာရှိမယ်...
@@ -27,31 +39,31 @@ class OnBoardingPage extends StatelessWidget {
           🌿 ️ဘယ်နေရာသွားသွား 
           🌿 ဝတ်လို့ရစေရမယ်...
           🌿 ️ဈေးနှုန်းသက်သာမယ်...''',
-          image: buildImage('assets/shopping.jpeg'),
+          image: buildImage('assets/1.png'),
           decoration: getPageDecoration(),
         ),
         PageViewModel(
-          title: '🌺 EVERYTIME YOU WILL NEED MY 𝐂𝐢𝐧𝐝𝐲 🌺',
+          title: 'EVERYTIME YOU WILL NEED MY CINDY',
           body: '''
           🌿  ခရီးထွက်ကြတဲ့အခါ...
           🌿  Shopping ထွကိကြတဲ့အခါ...
           🌿  မုန့်ထွက်စားကြတဲ့အခါ...
           🌿 လျှောက်လည်တဲ့အခါတိုင်း 
           ❝   𝐂𝐢𝐧𝐝𝐲 ကို သတိရလိုက်ပါနော်  ❞ ''',
-          image: buildImage('assets/shopping.jpeg'),
+          image: buildImage('assets/2.png'),
           decoration: getPageDecoration(),
         ),
         PageViewModel(
-          title: "🌺 EVERYTIME YOU WILL NEED MY 𝐂𝐢𝐧𝐝𝐲 🌺",
+          title: "EVERYTIME YOU WILL NEED MY CINDY",
           body: '''
           🌧  မိုးလေးကလဲရွာ....
           💨  လေလေးကလဲတိုက်....
           🤔  ဘာဝတ်ပြီး အပြင်ထွက်ရမလဲနော် ❓''',
-          image: buildImage('assets/shopping.jpeg'),
+          image: buildImage('assets/4.png'),
           decoration: getPageDecoration(),
         ),
         PageViewModel(
-          title: '🌺   HAPPY AND ONLY MY 𝐂𝐢𝐧𝐝𝐲   🌺',
+          title: 'HAPPY AND ONLY MY CINDY',
           body: ''' ❝  အမြဲတမ်း လွတ်လပ်ပေါ့ပါးနေစေဖို့
               𝐂𝐢𝐧𝐝𝐲 ဝတ်ကြစို့  ❞ ''',
           footer: Padding(
@@ -61,7 +73,7 @@ class OnBoardingPage extends StatelessWidget {
               onClicked: () => goToHome(context),
             ),
           ),
-          image: buildImage('assets/shopping.jpeg'),
+          image: buildImage('assets/3.png'),
           decoration: getPageDecoration(),
         ),
       ],
