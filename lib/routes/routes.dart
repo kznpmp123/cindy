@@ -8,6 +8,7 @@ import 'package:kozarni_ecome/screen/home_screen.dart';
 import 'package:kozarni_ecome/screen/item_upload_screen.dart';
 import 'package:kozarni_ecome/screen/manage_item.dart';
 import 'package:kozarni_ecome/screen/purchase_screen.dart';
+import 'package:kozarni_ecome/screen/search_screen.dart';
 
 import '../intro_screen.dart';
 
@@ -19,6 +20,7 @@ const String uploadItemScreen = '/uploadItemScreen';
 const String mangeItemScreen = '/manage-item';
 const String purchaseScreen = '/purchase-screen';
 const String blueToothScreen = '/bluetooth-screen';
+const String searchScreen = '/searchScreen';
 
 List<GetPage> routes = [
   GetPage(
@@ -54,5 +56,9 @@ List<GetPage> routes = [
   GetPage(
     name: blueToothScreen,
     page: () => BlueToothPrintScreen(),
+  ),
+  GetPage(
+    name: searchScreen,
+    page: () => SearchScreen(),
   ),
 ];

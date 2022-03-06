@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:kozarni_ecome/controller/home_controller.dart';
 import 'package:kozarni_ecome/data/constant.dart';
+import 'package:kozarni_ecome/routes/routes.dart';
 import 'package:kozarni_ecome/screen/view/brand.dart';
 import 'package:kozarni_ecome/screen/view/cart.dart';
 import 'package:kozarni_ecome/screen/view/favourite.dart';
@@ -138,41 +139,26 @@ class _HomeScreenState extends State<HomeScreen> {
           //     ),
           //   ),
           // )
-          Obx(
-            () => controller.isSearch.value
-                ? Container(
-                    width: MediaQuery.of(context).size.width * 0.6,
-                    height: 50,
-                    child: TextField(
-                      onChanged: controller.onSearch,
-                      onSubmitted: controller.searchItem,
-                      decoration: InputDecoration(
-                        hintText: "Search...",
-                        // border: OutlineInputBorder(),
-                      ),
-                    ),
-                  )
-                : ElevatedButton(
-                    style: ButtonStyle(
-                      alignment: Alignment.center,
-                      backgroundColor: MaterialStateProperty.all(Colors.white),
-                      elevation: MaterialStateProperty.resolveWith<double>(
-                        // As you said you dont need elevation. I'm returning 0 in both case
-                        (Set<MaterialState> states) {
-                          if (states.contains(MaterialState.disabled)) {
-                            return 0;
-                          }
-                          return 0; // Defer to the widget's default.
-                        },
-                      ),
-                    ),
-                    onPressed: controller.search,
-                    child: FaIcon(
-                      FontAwesomeIcons.search,
-                      color: Colors.black,
-                      size: 20,
-                    ),
-                  ),
+          ElevatedButton(
+            style: ButtonStyle(
+              alignment: Alignment.center,
+              backgroundColor: MaterialStateProperty.all(Colors.white),
+              elevation: MaterialStateProperty.resolveWith<double>(
+                // As you said you dont need elevation. I'm returning 0 in both case
+                (Set<MaterialState> states) {
+                  if (states.contains(MaterialState.disabled)) {
+                    return 0;
+                  }
+                  return 0; // Defer to the widget's default.
+                },
+              ),
+            ),
+            onPressed: () => Get.toNamed(searchScreen),
+            child: FaIcon(
+              FontAwesomeIcons.search,
+              color: Colors.black,
+              size: 20,
+            ),
           ),
 
           ElevatedButton(

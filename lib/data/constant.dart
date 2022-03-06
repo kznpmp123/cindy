@@ -19,8 +19,8 @@ const String profileCollection = 'profiles';
 const String itemCollection = 'items';
 const String purchaseCollection = 'purchases';
 const String brandCollection = 'brandProducts';
-const List<String> priceList = [
-  '၁ ထည် လက်လီ ဈေးနှုန်း',
-  'လက်ကား ဈေးနှုန်း',
-];
+// const List<String> priceList = [
+//   '၁ ထည် လက်လီ ဈေးနှုန်း',
+//   'လက်ကား ဈေးနှုန်း',
+// ];
 const String boxName = "favouritesBOX";

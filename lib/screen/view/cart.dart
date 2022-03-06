@@ -48,8 +48,8 @@ class CartView extends StatelessWidget {
                           imageUrl: photo,
                           // "$baseUrl$itemUrl${controller.getItem(controller.myCart[i].id).photo}/get",
                           width: 100,
-                          height: 100,
-                          fit: BoxFit.cover,
+                          height: 130,
+                          fit: BoxFit.fitHeight,
                         ),
                       ),
                       SizedBox(
@@ -304,7 +304,7 @@ class CartView extends StatelessWidget {
               right: BorderSide(),
             ),
           ),
-          width: 150,
+          width: 170,
           child: ListView.builder(
             shrinkWrap: true,
             itemCount: divisionList.length,
@@ -332,9 +332,12 @@ class CartView extends StatelessWidget {
                       : Colors.white,
                   duration: const Duration(milliseconds: 200),
                   child:
-                      Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                      Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                     //Text
-                    Text(divisionList[divisionIndex].name),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Text(divisionList[divisionIndex].name),
+                    ),
                     SizedBox(width: 10),
                     Icon(FontAwesomeIcons.angleRight),
                   ]),
@@ -352,7 +355,7 @@ class CartView extends StatelessWidget {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Container(
-        width: 200,
+        width: 230,
         height: MediaQuery.of(Get.context!).size.height * 0.4,
         decoration: BoxDecoration(
           border: Border(
@@ -381,10 +384,16 @@ class CartView extends StatelessWidget {
                         Get.back();
                         Get.back();
                       },
-                      child: Text(map.value[index],
-                          style: TextStyle(
-                            color: Colors.black,
-                          )),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 10, right: 10),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(map.value[index],
+                              style: TextStyle(
+                                color: Colors.black,
+                              )),
+                        ),
+                      ),
                     );
                   }),
             );

@@ -19,7 +19,7 @@ class PurchaseScreen extends StatelessWidget {
         backgroundColor: scaffoldBackground,
         appBar: AppBar(
           title: Text(
-            "Begonia Clothing Brand",
+            "𝐂𝐢𝐧𝐝𝐲 Export & Clothing Brand Fashion",
             style: TextStyle(color: Colors.black, fontSize: 14),
           ),
           elevation: 5,
@@ -191,33 +191,35 @@ class PurchaseScreen extends StatelessWidget {
 
   //PhotoViewer
   Widget photoViewer({required String heroTags}) {
-    return Container(
-      width: 100,
-      height: 100,
-      child: PhotoView(
-        imageProvider: NetworkImage(heroTags),
-        loadingBuilder: (context, progress) => Center(
-          child: Container(
-            width: 20.0,
-            height: 20.0,
-            child: const CircularProgressIndicator(),
+    return Center(
+      child: AspectRatio(
+        aspectRatio: 16 / 9,
+        child: PhotoView(
+          imageProvider: NetworkImage(heroTags),
+          loadingBuilder: (context, progress) => Center(
+            child: Container(
+              width: 20.0,
+              height: 20.0,
+              child: const CircularProgressIndicator(),
+            ),
           ),
+          backgroundDecoration:
+              BoxDecoration(color: Colors.white.withOpacity(0)),
+          gaplessPlayback: false,
+          //customSize: MediaQuery.of(context).size,
+          heroAttributes: PhotoViewHeroAttributes(
+            tag: heroTags,
+            transitionOnUserGestures: true,
+          ),
+          //scaleStateChangedCallback: this.onScaleStateChanged,
+          enableRotation: true,
+          //controller:  controller,
+          minScale: PhotoViewComputedScale.contained * 0.8,
+          maxScale: PhotoViewComputedScale.covered * 3,
+          initialScale: PhotoViewComputedScale.contained,
+          basePosition: Alignment.center,
+          //scaleStateCycle: scaleStateCycle
         ),
-        backgroundDecoration: BoxDecoration(color: Colors.white.withOpacity(0)),
-        gaplessPlayback: false,
-        //customSize: MediaQuery.of(context).size,
-        heroAttributes: PhotoViewHeroAttributes(
-          tag: heroTags,
-          transitionOnUserGestures: true,
-        ),
-        //scaleStateChangedCallback: this.onScaleStateChanged,
-        enableRotation: true,
-        //controller:  controller,
-        minScale: PhotoViewComputedScale.contained * 0.8,
-        maxScale: PhotoViewComputedScale.covered * 3,
-        initialScale: PhotoViewComputedScale.contained,
-        basePosition: Alignment.center,
-        //scaleStateCycle: scaleStateCycle
       ),
     );
   }

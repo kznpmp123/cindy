@@ -20,94 +20,13 @@ class HomeView extends StatelessWidget {
     final HomeController controller = Get.find();
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Obx(
-        () => controller.isSearch.value
-            ? StaggeredGridView.countBuilder(
-                staggeredTileBuilder: (int index) => StaggeredTile.fit(1),
-                shrinkWrap: true,
-                physics: ScrollPhysics(),
-                crossAxisCount: 2,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                itemCount: controller.searchitems.length,
-                itemBuilder: (_, i) => Stack(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        controller.setSelectedItem(controller.searchitems[i]);
-                        Get.toNamed(detailScreen);
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 10, right: 10),
-                        child: ConstrainedBox(
-                          constraints: BoxConstraints(),
-                          child: Container(
-                            color: Colors.white,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Hero(
-                                  tag: controller.searchitems[i].photo,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(20.0),
-                                    child: CachedNetworkImage(
-                                      imageUrl: controller.searchitems[i].photo,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Column(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 5, left: 24, right: 20),
-                                      child: Text(
-                                        controller.searchitems[i].name,
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 5,
-                                          bottom: 5,
-                                          left: 30,
-                                          right: 20),
-                                      child: Text(
-                                        "${controller.searchitems[i].price} Kyats",
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              )
-            : ListView(
+      body: ListView(
                 children: [
                   // HomePickUp(),
                   HomeCategory(),
                   HomeItems(),
                 ],
               ),
-      ),
     );
   }
 }

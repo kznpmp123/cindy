@@ -46,10 +46,15 @@ class _UploadItemState extends State<UploadItem> {
       backgroundColor: scaffoldBackground,
       appBar: AppBar(
         title: Text(
-          "𝐂𝐢𝐧𝐝𝐲 Branded Export Fashion",
-          style: TextStyle(color: Colors.black, fontSize: 14),
+          "𝐂𝐢𝐧𝐝𝐲 Export & Fashion Clothing Brand",
+          style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: appBarTitleColor,
+              wordSpacing: 1
+          ),
         ),
-        elevation: 5,
+        elevation: 0,
         backgroundColor: detailBackgroundColor,
         leading: IconButton(
           onPressed: Get.back,
