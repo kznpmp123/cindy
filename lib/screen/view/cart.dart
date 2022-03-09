@@ -168,7 +168,7 @@ class CartView extends StatelessWidget {
                         ),
                         //DropDown TownShip List
                         Container(
-                          width: 100,
+                          width: 150,
                           height: 50,
                           child:
                               GetBuilder<HomeController>(builder: (controller) {

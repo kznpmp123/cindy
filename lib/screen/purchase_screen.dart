@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:kozarni_ecome/controller/home_controller.dart';
 import 'package:kozarni_ecome/data/constant.dart';
 import 'package:kozarni_ecome/model/purchase.dart';
-import 'package:kozarni_ecome/routes/routes.dart';
 import 'package:photo_view/photo_view.dart';
 
 class PurchaseScreen extends StatelessWidget {
