@@ -393,7 +393,7 @@ class DetailScreen extends StatelessWidget {
                       height: 5,
                     ),
                     Text(
-                      'အမှတ် 116 ၊ သတိပဌာန်လမ်း ၊ မြို့မတောင်ရပ်ကွက် ၊ သန်လျင်မြို့နယ် ၊ ရန်ကုန်မြို့။',
+                      'အမှတ် 62 ၊ သတိပဌာန်လမ်း ၊ မြို့မတောင်ရပ်ကွက် ၊ သန်လျင်မြို့နယ် ၊ ရန်ကုန်မြို့။',
                       style: TextStyle(
                         fontSize: 15,
                         color: Colors.black,
