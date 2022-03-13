@@ -167,6 +167,28 @@ class _HomeScreenState extends State<HomeScreen> {
               backgroundColor: MaterialStateProperty.all(Colors.white),
               elevation: MaterialStateProperty.resolveWith<double>(
                 // As you said you dont need elevation. I'm returning 0 in both case
+                    (Set<MaterialState> states) {
+                  if (states.contains(MaterialState.disabled)) {
+                    return 0;
+                  }
+                  return 0; // Defer to the widget's default.
+                },
+              ),
+            ),
+            onPressed: () => Get.toNamed(favourite),
+            child: FaIcon(
+              FontAwesomeIcons.solidHeart,
+              color: Colors.red,
+              size: 20,
+            ),
+          ),
+
+          ElevatedButton(
+            style: ButtonStyle(
+              alignment: Alignment.center,
+              backgroundColor: MaterialStateProperty.all(Colors.white),
+              elevation: MaterialStateProperty.resolveWith<double>(
+                // As you said you dont need elevation. I'm returning 0 in both case
                 (Set<MaterialState> states) {
                   if (states.contains(MaterialState.disabled)) {
                     return 0;
@@ -188,30 +210,8 @@ class _HomeScreenState extends State<HomeScreen> {
               size: 20,
             ),
           ),
-          // Container(
-          //   margin: EdgeInsets.only(
-          //     top: 7,
-          //     bottom: 10,
-          //     right: 7,
-          //   ),
-          //   child: ElevatedButton(
-          //     style: ButtonStyle(
-          //       backgroundColor: MaterialStateProperty.all(Colors.white),
-          //       overlayColor: MaterialStateProperty.all(Colors.black12),
-          //     ),
-          //     onPressed: () async {
-          //       try {
-          //         await launch('https://m.me/begoniazue');
-          //       } catch (e) {
-          //         print(e);
-          //       }
-          //     },
-          //     child: FaIcon(
-          //       FontAwesomeIcons.facebookMessenger,
-          //       color: Colors.blue,
-          //     ),
-          //   ),
-          // )
+
+
         ],
       ),
       body: Obx(

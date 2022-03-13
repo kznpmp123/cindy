@@ -74,6 +74,25 @@ class BottomNav extends StatelessWidget {
                 children: [
                   IconButton(
                     onPressed: () {
+                      controller.changeNav(3);
+                    },
+                    icon: Image.asset("assets/hotsale.png",
+                      color: controller.navIndex.value == 3
+                          ? null
+                          : Colors.black,
+                    ),
+                  ),
+                  Text("Hot Sales"),
+                ],
+              ),
+
+            ),
+
+            Expanded(
+              child: Column(
+                children: [
+                  IconButton(
+                    onPressed: () {
                       controller.changeNav(2);
                     },
                     icon: Stack(
@@ -99,25 +118,7 @@ class BottomNav extends StatelessWidget {
                 ],
               ),
             ),
-            Expanded(
-              child: Column(
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      controller.changeNav(3);
-                    },
-                  icon: Icon(
-                      FontAwesomeIcons.solidHeart,
-                      color: controller.navIndex.value == 3
-                          ? homeIndicatorColor
-                          : null,
-                    ),
-                  ),
-                  Text("Favourite"),
-                ],
-              ),
 
-            ),
             Expanded(
               child: Column(
                 children: [
